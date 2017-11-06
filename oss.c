@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 4th, 2017
- * Log: Copying over my project 4 
+ * Date: November 5th, 2017
+ * Log: Updating while loop
  */
 
 #include <stdio.h>
@@ -28,6 +28,10 @@ struct sembuf sb;
 int sharedmem[3];
 int processIds[100];
 int globalProcessCount = 0;
+
+void checkDeadlock();
+
+bool req_lt_avail(const int*, const int*, const int, const int);
 
 union semun{
 	int val;
@@ -90,9 +94,11 @@ int main(int argc, char* argv[]){
 	key_t key = ftok("keygen", 1);
 	key_t key2 = ftok("keygen2", 1);
 	key_t key3 = ftok("keygen3", 1);
+	key_t key4 = ftok("keygen4", 1);
 	int memid = shmget(key, sizeof(int*)*2, IPC_CREAT | 0644);
 	int memid2 = shmget(key2, sizeof(struct sysStruct) * 20, IPC_CREAT | 0644);
 	int semid = semget(key3, 1, IPC_CREAT | 0644);
+	int memid3 = shmget(key4, sizeof(int*)*2, IPC_CREAT | 0644);
 	if(memid == -1 || memid2 == -1){
 		printf("%s: ", argv[0]);
 		perror("Error: \n");
@@ -101,6 +107,7 @@ int main(int argc, char* argv[]){
 	sharedmem[1] = memid2;
 	sharedmem[2] = semid;
 	int *clock = (int *)shmat(memid, NULL, 0);
+	int *shmMsg = (int *)shmat(memid3, NULL, 0);
 	sysBlock = (struct sysStruct *)shmat(memid2, NULL, 0);
 	if(*clock == -1 || (int*)sysBlock == (int*)-1){
 		printf("%s: ", argv[0]);
@@ -109,6 +116,7 @@ int main(int argc, char* argv[]){
 	int clockVal = 0;
 	for(i = 0; i < 2; i++){
 		memcpy(&clock[i], &clockVal, 4);
+		memcpy(&shmMsg[i], &clockVal, 4);
 	}
 	
 	semctl(semid, 0, SETVAL, 1, arg);
@@ -125,17 +133,33 @@ int main(int argc, char* argv[]){
 	int forkTime;
 	int incrementTime;
 	int lastForkTime[2];
-	int lastClockTime[2];
+	//int lastClockTime[2];
 	int processIndex = 0;
 	int totalProcessNum = 0;
+	int percentShared = 0;
+	//int initInstance[20];
+	int clearProcess[18];
+	
 	lastForkTime[0] = clock[0];
 	lastForkTime[1] = clock[1];
-	lastClockTime[0] = clock[0];
-	lastClockTime[1] = clock[1];
+	//lastClockTime[0] = clock[0];
+	//lastClockTime[1] = clock[1];
 	pid_t childpid;
 	srand(time(NULL));
-	forkTime = rand() % 500000001;
-	while(1){
+	forkTime = rand() % 500000000 + 1;
+	percentShared = rand() % 10 + 15;
+	for(i = 0; i < 20; i++){
+		sysBlock[i].num = rand() % 10 + 1;
+		if(i <= 20 * (double)percentShared / 100){
+			sysBlock[i].shared = true;
+		}else{
+			sysBlock[i].shared = false;
+		}
+		if(i < 18)
+			clearProcess[i] = 0;
+	}
+
+	while(clock[0] < 100 && clock[1] < 500000000){
 		incrementTime = rand() % 1000;
 		clock[0] += 1;
 		if(clock[1] + incrementTime >= 1000000000){
@@ -145,16 +169,16 @@ int main(int argc, char* argv[]){
 		else
 			clock[1] += incrementTime;
 		if(processCount == 18){
-			for(i = 0 ; i < 18; i++){
-			//	if(sysBlock[i].pid == -2 && processCount == 18){
+			for(i = 0; i < 18; i++){
+				if(clearProcess[i] == 1){
 					unsetBit(bitArray, i);
 					processCount--;
 					processIndex = i;
 					break;
-			//	}
+				}
 			}
 		}
-		if(clock[0] - lastForkTime[0] > forkTime){
+		if(clock[0] - lastForkTime[0] > 1){ //change this to > than forktime
 			lastForkTime[0] = clock[0];
 			lastForkTime[1] = clock[1];
 			forkTime = rand() % 3;
@@ -174,9 +198,7 @@ int main(int argc, char* argv[]){
 				}
 
 				if(childpid == 0){
-					char arg[12];
-					sprintf(arg, "%d", processIndex);
-					execl("./user", "user", arg, NULL);
+					execl("./user", "user", NULL);
 				}else{
 					processIds[processIndex] = childpid;
 					processCount++;
@@ -190,10 +212,7 @@ int main(int argc, char* argv[]){
 				}
 			}
 		}
-
-		if(clock[0] > 100){
-			break;
-		}
+		checkDeadlock();
 	}
 
 	sleep(10);
@@ -201,4 +220,40 @@ int main(int argc, char* argv[]){
 	clean(1);
 	
 	return 0;
+}
+
+void checkDeadlock(){
+	return;
+}
+
+//DEADLOCK ALGORITHM FROM NOTES
+bool deadlock(const int *available, const int m, const int n, const int *request, const int *allocated){
+	int work[m];   // m resources
+	bool finish[n];   // n processes
+	int i, p;
+	for (i = 0; i < m; work[i] = available[i++]);
+	for (i = 0; i < n; finish[i++] = false);
+	for (p = 0; p < n; p++){
+		if (finish[p])
+			continue;
+		if (req_lt_avail(request, work, p, m)){
+			finish[p] = true;
+			for (i = 0; i < m; i++)
+				work[i] += allocated[p*m+i];
+			p = -1;
+		}
+	}
+
+	for (p = 0; p < n; p++)
+		if (!finish[p])
+			break;
+	return (p != n);
+}
+
+bool req_lt_avail(const int *req, const int *avail, const int pnum, const int num_res){
+	int i;
+	for (i = 0; i < num_res; i++)
+		if (req[pnum*num_res+i] > avail[i])
+			break;
+	return (i == num_res);
 }
