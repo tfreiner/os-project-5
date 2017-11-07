@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 5th, 2017
- * Log: Updating while loop
+ * Date: November 6th, 2017
+ * Log: Adding options 
  */
 
 #include <stdio.h>
@@ -25,7 +25,7 @@
 #define BIT_COUNT 32
 
 struct sembuf sb;
-int sharedmem[3];
+int sharedmem[4];
 int processIds[100];
 int globalProcessCount = 0;
 
@@ -48,6 +48,8 @@ void clean(int sig){
 	shmctl(sharedmem[0], IPC_RMID, NULL);
 	shmctl(sharedmem[1], IPC_RMID, NULL);
 	semctl(sharedmem[2], 0, IPC_RMID);
+	shmctl(sharedmem[3], IPC_RMID, NULL);
+
 	for(i = 0; i < globalProcessCount; i++){
 		kill(processIds[i], SIGKILL);
 	}
@@ -69,11 +71,12 @@ bool checkBit(int bitArray[], int i){
 int main(int argc, char* argv[]){
 	union semun arg;
 	arg.val = 1;
-	int i;
+	int i, option;
 	int processCount = 0;
 	int bitArray[1] = { 0 };
 	sysStruct* sysBlock;
 	bool tableFull = 0;
+	bool verbose = 0;
 
 	//SIGNAL HANDLING
 	signal(SIGINT, clean);
@@ -88,6 +91,29 @@ int main(int argc, char* argv[]){
 		printf("%s: ", argv[0]);
 		perror("Error: \n");
 		return 1;
+	}
+
+	//OPTIONS
+	
+	if (argc != 1 && argc != 2){
+		fprintf(stderr, "%s Error: Incorrect number of arguments\n", argv[0]);
+		return 1;
+	}
+	while ((option = getopt(argc, argv, "hv")) != -1){
+		switch (option){
+			case 'h':
+				printf("Usage: %s <-v>\n", argv[0]);
+				printf("\t-v: verbose logging on\n");
+				return 0;
+				break;
+			case 'v':
+				verbose = true;
+				break;
+			case '?':
+				fprintf(stderr, "%s Error: Usage: %s <-v>\n", argv[0], argv[0]);
+				return 1;
+				break;
+		}
 	}
 
 	//SHARED MEMORY
@@ -106,6 +132,7 @@ int main(int argc, char* argv[]){
 	sharedmem[0] = memid;
 	sharedmem[1] = memid2;
 	sharedmem[2] = semid;
+	sharedmem[3] = memid3;
 	int *clock = (int *)shmat(memid, NULL, 0);
 	int *shmMsg = (int *)shmat(memid3, NULL, 0);
 	sysBlock = (struct sysStruct *)shmat(memid2, NULL, 0);
@@ -178,7 +205,7 @@ int main(int argc, char* argv[]){
 				}
 			}
 		}
-		if(clock[0] - lastForkTime[0] > 1){ //change this to > than forktime
+		if((clock[0] - lastForkTime[0]) >= 1 || (clock[0] == lastForkTime[0] && clock[1] - lastForkTime[1] > 500000000)){
 			lastForkTime[0] = clock[0];
 			lastForkTime[1] = clock[1];
 			forkTime = rand() % 3;

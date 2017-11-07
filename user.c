@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 5th, 2017
- * Log: Setting bound
+ * Date: November 6th, 2017
+ * Log: Adding shared mem message array
  */
 
 #include <stdio.h>
@@ -14,15 +14,17 @@
 #include <sys/shm.h>
 #include <string.h>
 #include "sys.h"
-#define BOUND 100
+#define BOUND 10
 
 int main(int argc, char* argv[]){
 	struct sembuf sb;
 	sysStruct* sysBlock;
 	srand(time(NULL) ^ (getpid()<<16));
-	int bound = rand() % BOUND;
-	int checkTime = rand() % 250000000;
-	
+	int bound = rand() % BOUND + 1;
+	int checkTime = 0;
+	int startSec = 0;
+
+	exit(0);
 	//SHARED MEMORY
 	key_t key = ftok("keygen", 1);
 	key_t key2 = ftok("keygen2", 1);
@@ -36,6 +38,20 @@ int main(int argc, char* argv[]){
 	int *clock = (int *)shmat(memid, NULL, 0);	
 	int *shmMsg = (int *)shmat(memid3, NULL, 0);
 	sysBlock = (sysStruct *)shmat (memid2, NULL, 0);
+
+	startSec = clock[0];
+
+	while(1){
+		checkTime = rand() % 250000000;
+		if(clock[0] - startSec > bound){
+			//claim or release resource
+			shmMsg[0] = getpid();
+			shmMsg[1] = 1; //claim resource
+			shmMsg[1] = 0; //release resource
+		}else{
+			//continue loop
+		}
+	}
 
 	exit(0);
 }
