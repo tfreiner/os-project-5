@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 6th, 2017
- * Log: Adding options 
+ * Date: November 7th, 2017
+ * Log: Adding process structure 
  */
 
 #include <stdio.h>
@@ -20,12 +20,13 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <math.h>
-#include "sys.h"
+#include "rstruct.h"
+#include "pstruct.h"
 
 #define BIT_COUNT 32
 
 struct sembuf sb;
-int sharedmem[4];
+int sharedmem[5];
 int processIds[100];
 int globalProcessCount = 0;
 
@@ -49,6 +50,7 @@ void clean(int sig){
 	shmctl(sharedmem[1], IPC_RMID, NULL);
 	semctl(sharedmem[2], 0, IPC_RMID);
 	shmctl(sharedmem[3], IPC_RMID, NULL);
+	shmctl(sharedmem[4], IPC_RMID, NULL);
 
 	for(i = 0; i < globalProcessCount; i++){
 		kill(processIds[i], SIGKILL);
@@ -71,12 +73,15 @@ bool checkBit(int bitArray[], int i){
 int main(int argc, char* argv[]){
 	union semun arg;
 	arg.val = 1;
-	int i, option;
+	int i, j, option;
 	int processCount = 0;
 	int bitArray[1] = { 0 };
-	sysStruct* sysBlock;
+	rStruct* rBlock;
+	pStruct* pBlock;
 	bool tableFull = 0;
 	bool verbose = 0;
+	int grantedRequests = 0;
+	int lineCount = 0;
 
 	//SIGNAL HANDLING
 	signal(SIGINT, clean);
@@ -90,14 +95,13 @@ int main(int argc, char* argv[]){
 	if(file == NULL){
 		printf("%s: ", argv[0]);
 		perror("Error: \n");
-		return 1;
+		exit(1);
 	}
 
-	//OPTIONS
-	
+	//OPTIONS**********
 	if (argc != 1 && argc != 2){
 		fprintf(stderr, "%s Error: Incorrect number of arguments\n", argv[0]);
-		return 1;
+		exit(1);
 	}
 	while ((option = getopt(argc, argv, "hv")) != -1){
 		switch (option){
@@ -111,20 +115,23 @@ int main(int argc, char* argv[]){
 				break;
 			case '?':
 				fprintf(stderr, "%s Error: Usage: %s <-v>\n", argv[0], argv[0]);
-				return 1;
+				exi(1);
 				break;
 		}
 	}
+	//**********OPTIONS
 
-	//SHARED MEMORY
+	//SHARED MEMORY**********
 	key_t key = ftok("keygen", 1);
 	key_t key2 = ftok("keygen2", 1);
 	key_t key3 = ftok("keygen3", 1);
 	key_t key4 = ftok("keygen4", 1);
+	key_t key5 = ftok("keygen5", 1);
 	int memid = shmget(key, sizeof(int*)*2, IPC_CREAT | 0644);
-	int memid2 = shmget(key2, sizeof(struct sysStruct) * 20, IPC_CREAT | 0644);
+	int memid2 = shmget(key2, sizeof(struct rStruct) * 20, IPC_CREAT | 0644);
+	int memid3 = shmget(key4, sizeof(int*)*3, IPC_CREAT | 0644);
+	int memid4 = shmget(key5, sizeof(struct pStruct) * 18, IPC_CREAT | 0644);
 	int semid = semget(key3, 1, IPC_CREAT | 0644);
-	int memid3 = shmget(key4, sizeof(int*)*2, IPC_CREAT | 0644);
 	if(memid == -1 || memid2 == -1){
 		printf("%s: ", argv[0]);
 		perror("Error: \n");
@@ -133,16 +140,20 @@ int main(int argc, char* argv[]){
 	sharedmem[1] = memid2;
 	sharedmem[2] = semid;
 	sharedmem[3] = memid3;
+	sharedmem[4] = memid4;
 	int *clock = (int *)shmat(memid, NULL, 0);
 	int *shmMsg = (int *)shmat(memid3, NULL, 0);
-	sysBlock = (struct sysStruct *)shmat(memid2, NULL, 0);
-	if(*clock == -1 || (int*)sysBlock == (int*)-1){
+	rBlock = (struct rStruct *)shmat(memid2, NULL, 0);
+	pBlock = (struct pStruct *)shmat(memid4, NULL, 0);
+	if(*clock == -1 || (int*)rBlock == (int*)-1 || (int*)pBlock == (int*)-1){
 		printf("%s: ", argv[0]);
 		perror("Error: \n");
+		clean(1);
 	}
 	int clockVal = 0;
-	for(i = 0; i < 2; i++){
-		memcpy(&clock[i], &clockVal, 4);
+	for(i = 0; i < 3; i++){
+		if(i != 2)
+			memcpy(&clock[i], &clockVal, 4);
 		memcpy(&shmMsg[i], &clockVal, 4);
 	}
 	
@@ -153,8 +164,9 @@ int main(int argc, char* argv[]){
 	semop(semid, &sb, 1);
 	if(errno){
 		fprintf(stderr, "%s\n", strerror(errno));
-		exit(1);
+		clean(1);
 	}
+	//**********SHARED MEMORY
 
 	//CREATING PROCESSES
 	int forkTime;
@@ -176,14 +188,19 @@ int main(int argc, char* argv[]){
 	forkTime = rand() % 500000000 + 1;
 	percentShared = rand() % 10 + 15;
 	for(i = 0; i < 20; i++){
-		sysBlock[i].num = rand() % 10 + 1;
+		rBlock[i].num = rand() % 10 + 1;
 		if(i <= 20 * (double)percentShared / 100){
-			sysBlock[i].shared = true;
+			rBlock[i].shared = true;
 		}else{
-			sysBlock[i].shared = false;
+			rBlock[i].shared = false;
 		}
 		if(i < 18)
 			clearProcess[i] = 0;
+		for(j = 0; j < 20; j++){
+			if(i > 17)
+				break;
+			pBlock[i].resourceNum[j] = 0;
+		}
 	}
 
 	while(clock[0] < 100 && clock[1] < 500000000){
@@ -225,9 +242,12 @@ int main(int argc, char* argv[]){
 				}
 
 				if(childpid == 0){
-					execl("./user", "user", NULL);
+					char arg[12];
+					sprintf(arg, "%d", processIndex);
+					execl("./user", "user", arg, NULL);
 				}else{
 					processIds[processIndex] = childpid;
+					pBlock[processIndex].pid = childpid;
 					processCount++;
 					globalProcessCount++;
 					processIndex++;
@@ -255,8 +275,8 @@ void checkDeadlock(){
 
 //DEADLOCK ALGORITHM FROM NOTES
 bool deadlock(const int *available, const int m, const int n, const int *request, const int *allocated){
-	int work[m];   // m resources
-	bool finish[n];   // n processes
+	int work[m]; // m resources
+	bool finish[n]; // n processes
 	int i, p;
 	for (i = 0; i < m; work[i] = available[i++]);
 	for (i = 0; i < n; finish[i++] = false);

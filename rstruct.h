@@ -5,8 +5,8 @@
  */
 #include <stdbool.h>
 
-typedef struct sysStruct{
+typedef struct rStruct{
 	bool shared;
 	int num;
-	int process[18];
-}sysStruct;
+	int processNum[18];
+}rStruct;
