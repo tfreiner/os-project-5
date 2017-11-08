@@ -1,9 +1,8 @@
 /**
  * Author: Taylor Freiner
- * Date: November 7th, 2017
- * Log: Adding process structure 
+ * Date: November 8th, 2017
+ * Log: Adding resource allocation
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,8 +28,11 @@ struct sembuf sb;
 int sharedmem[5];
 int processIds[100];
 int globalProcessCount = 0;
+bool verbose = 0;
+int grantedRequests = 0;
+int lineCount = 0;
 
-void checkDeadlock();
+void checkRequests(int*, pStruct*, rStruct*, int*, FILE*);
 
 bool req_lt_avail(const int*, const int*, const int, const int);
 
@@ -79,8 +81,6 @@ int main(int argc, char* argv[]){
 	rStruct* rBlock;
 	pStruct* pBlock;
 	bool tableFull = 0;
-	bool verbose = 0;
-	int grantedRequests = 0;
 	int lineCount = 0;
 
 	//SIGNAL HANDLING
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]){
 				break;
 			case '?':
 				fprintf(stderr, "%s Error: Usage: %s <-v>\n", argv[0], argv[0]);
-				exi(1);
+				exit(1);
 				break;
 		}
 	}
@@ -151,10 +151,11 @@ int main(int argc, char* argv[]){
 		clean(1);
 	}
 	int clockVal = 0;
+	int messageVal = -1;
 	for(i = 0; i < 3; i++){
 		if(i != 2)
 			memcpy(&clock[i], &clockVal, 4);
-		memcpy(&shmMsg[i], &clockVal, 4);
+		memcpy(&shmMsg[i], &messageVal, 4);
 	}
 	
 	semctl(semid, 0, SETVAL, 1, arg);
@@ -259,7 +260,7 @@ int main(int argc, char* argv[]){
 				}
 			}
 		}
-		checkDeadlock();
+		checkRequests(shmMsg, pBlock, rBlock, clock, file);
 	}
 
 	sleep(10);
@@ -269,7 +270,62 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-void checkDeadlock(){
+void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FILE* file){
+	sb.sem_op = 1;
+	sb.sem_num = 0;
+	sb.sem_flg = 0;
+	int pIndex = shmMsg[0];
+	int rIndex = shmMsg[2];
+	int i, j;
+	if(shmMsg[1] == 1){ //process is requesting claim
+		if(verbose && lineCount < 10000){
+			fprintf(file, "Master has detected P%d requesting R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
+			lineCount++;
+		}
+
+		if(rBlock[rIndex].numClaimed < rBlock[rIndex].num){ //grant claim request
+			if(verbose && lineCount < 10000){
+				fprintf(file, "Master granting P%d request R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
+				lineCount++;
+			}
+			rBlock[rIndex].numClaimed++;
+			pBlock[pIndex].numClaimed++;
+			pBlock[pIndex].resourceNum[rIndex]++;
+			grantedRequests++;
+			if(grantedRequests == 20){
+				grantedRequests = 0;
+				if(verbose && lineCount < 10000){
+					fprintf(file, "Current system resources:\n");
+					fprintf(file, "\tR0\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tR10\tR11\tR12\tR13\tR14\tR15\tR16\tR17\tR18\tR19\n");
+					for(i = 0; i < 18; i++){
+						fprintf(file, "P%d\t", i);
+						for(j = 0; j < 20; j++){
+							fprintf(file, "%d\t", pBlock[i].resourceNum[j]);
+
+						}
+						fprintf(file, "\n");
+					}
+					lineCount++;
+				}
+			}
+			semop(sharedmem[2], &sb, 1);
+		}else{ //deny claim request
+			if(verbose && lineCount < 10000){
+				fprintf(file, "Master denying P%d request R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
+				lineCount++;
+			}
+			semop(sharedmem[2], &sb, 1);
+		}
+	}else if(shmMsg[1] == 0){ //process is requesting release
+		if(verbose && lineCount < 10000){
+			fprintf(file, "Master has acknowledged P%d releasing R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
+			lineCount++;
+		}
+		rBlock[rIndex].numClaimed--;
+		pBlock[pIndex].numClaimed--;
+		pBlock[pIndex].resourceNum[rIndex]--;
+		semop(sharedmem[2], &sb, 1);
+	}
 	return;
 }
 

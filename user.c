@@ -1,9 +1,8 @@
 /**
  * Author: Taylor Freiner
- * Date: November 7th, 2017
- * Log: Adding request/release of resources
+ * Date: November 8th, 2017
+ * Log: Integrating resource allocation with oss 
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -15,7 +14,7 @@
 #include <string.h>
 #include "rstruct.h"
 #include "pstruct.h"
-#define BOUND 10
+#define BOUND 5 
 
 int main(int argc, char* argv[]){
 	struct sembuf sb;
@@ -51,8 +50,6 @@ int main(int argc, char* argv[]){
 	sb.sem_num = 0;
 	sb.sem_flg = 0;
 
-	shmMsg[0] = pBlock[index].pid;
-
 	startSec = clock[0];
 
 	while(1){
@@ -64,24 +61,26 @@ int main(int argc, char* argv[]){
 				claim = rand() % 2;
 
 			if(claim){
+				shmMsg[0] = index;
 				shmMsg[1] = 1; //claim
 				shmMsg[2] = resource; //resource to claim.
 				semop(semid, &sb, 1);
 
 			}else{
-				resource = 0;
+				resource = -1;
 				for(i = 0; i < 20; i++){
 					if(pBlock[index].resourceNum[i] != 0){
 						resource = i;
 						break;
 					}
 				}
-				shmMsg[1] = 0; //release
-				shmMsg[2] = resource; //resource to release
-				semop(semid, &sb, 1);
+				if(resource >= 0){
+					shmMsg[0] = index;
+					shmMsg[1] = 0; //release
+					shmMsg[2] = resource; //resource to release
+					semop(semid, &sb, 1);
+				}
 			}
-		}else{
-			//continue loop
 		}
 	}
 
