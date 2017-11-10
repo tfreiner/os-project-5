@@ -284,6 +284,7 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 		}
 
 		if(rBlock[rIndex].numClaimed < rBlock[rIndex].num){ //grant claim request
+			printf("OSS: CLAIM %d:%d\n", shmMsg[0], shmMsg[2]);
 			if(verbose && lineCount < 10000){
 				fprintf(file, "Master granting P%d request R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 				lineCount++;
@@ -308,15 +309,19 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 					lineCount++;
 				}
 			}
-			semop(sharedmem[2], &sb, 1);
 		}else{ //deny claim request
 			if(verbose && lineCount < 10000){
 				fprintf(file, "Master denying P%d request R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 				lineCount++;
 			}
-			semop(sharedmem[2], &sb, 1);
 		}
+		shmMsg[0] = -1;
+		shmMsg[1] = -1;
+		shmMsg[2] = -1;
+		semop(sharedmem[2], &sb, 1);
 	}else if(shmMsg[1] == 0){ //process is requesting release
+		printf("OSS: RELEASE %d:%d\n", shmMsg[0], shmMsg[2]);
+		
 		if(verbose && lineCount < 10000){
 			fprintf(file, "Master has acknowledged P%d releasing R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 			lineCount++;
@@ -324,6 +329,9 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 		rBlock[rIndex].numClaimed--;
 		pBlock[pIndex].numClaimed--;
 		pBlock[pIndex].resourceNum[rIndex]--;
+		shmMsg[0] = -1;
+		shmMsg[1] = -1;
+		shmMsg[2] = -1;	
 		semop(sharedmem[2], &sb, 1);
 	}
 	return;

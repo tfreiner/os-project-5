@@ -61,20 +61,21 @@ int main(int argc, char* argv[]){
 				claim = rand() % 2;
 
 			if(claim){
+				printf("USER: CLAIM %d:%d\n", index, resource);
 				shmMsg[0] = index;
 				shmMsg[1] = 1; //claim
 				shmMsg[2] = resource; //resource to claim.
 				semop(semid, &sb, 1);
-
 			}else{
 				resource = -1;
 				for(i = 0; i < 20; i++){
-					if(pBlock[index].resourceNum[i] != 0){
+					if(pBlock[index].resourceNum[i] > 0){
 						resource = i;
 						break;
 					}
 				}
 				if(resource >= 0){
+					printf("USER: RELEASE %d:%d\n", index, resource);
 					shmMsg[0] = index;
 					shmMsg[1] = 0; //release
 					shmMsg[2] = resource; //resource to release
