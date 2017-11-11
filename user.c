@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 8th, 2017
- * Log: Integrating resource allocation with oss 
+ * Date: November 11th, 2017
+ * Log: Starting to implement deadlock algorithm 
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,13 +22,13 @@ int main(int argc, char* argv[]){
 	pStruct* pBlock;
 	srand(time(NULL) ^ (getpid()<<16));
 	int bound = rand() % BOUND + 1;
-	int checkTime = 0;
+	//int checkTime = 0;
 	int startSec = 0;
 	int index = atoi(argv[1]);
 	bool claim = true;
-	int resource = rand() % 20;
 	bool resourcePicked = false;
 	int i;
+	int resource;
 	
 	//SHARED MEMORY
 	key_t key = ftok("keygen", 1);
@@ -46,26 +46,27 @@ int main(int argc, char* argv[]){
 	rBlock = (rStruct *)shmat(memid2, NULL, 0);
 	pBlock = (pStruct *)shmat(memid4, NULL, 0);
 
-	sb.sem_op = -1;
-	sb.sem_num = 0;
-	sb.sem_flg = 0;
-
 	startSec = clock[0];
 
+	//printf("CLOCK[0]: %d, BOUND: %d\n", clock[0], bound);
 	while(1){
-		checkTime = rand() % 250000000;
-		if(clock[0] - startSec > bound){
+		//checkTime = rand() % 250000000;
+		//if(clock[0] - startSec > bound){
+			resource = rand() % 20;
 			if(pBlock[index].numClaimed == 0)
 				claim = true;
 			else
 				claim = rand() % 2;
 
 			if(claim){
-				printf("USER: CLAIM %d:%d\n", index, resource);
+				sb.sem_op = -1;
+ 				sb.sem_num = 0;
+ 				sb.sem_flg = 0;
+				//semop(semid, &sb, 1);
+				//printf("USER: CLAIM %d:%d\n", index, resource);
 				shmMsg[0] = index;
 				shmMsg[1] = 1; //claim
 				shmMsg[2] = resource; //resource to claim.
-				semop(semid, &sb, 1);
 			}else{
 				resource = -1;
 				for(i = 0; i < 20; i++){
@@ -75,14 +76,19 @@ int main(int argc, char* argv[]){
 					}
 				}
 				if(resource >= 0){
-					printf("USER: RELEASE %d:%d\n", index, resource);
+					sb.sem_op = -1;
+ 					sb.sem_num = 0;
+ 					sb.sem_flg = 0;
+				//	semop(semid, &sb, 1);
+				//	printf("USER: RELEASE %d:%d\n", index, resource);
 					shmMsg[0] = index;
 					shmMsg[1] = 0; //release
 					shmMsg[2] = resource; //resource to release
 					semop(semid, &sb, 1);
 				}
 			}
-		}
+	//		break;
+		//}
 	}
 
 	exit(0);

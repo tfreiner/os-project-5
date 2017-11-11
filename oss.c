@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 8th, 2017
- * Log: Adding resource allocation
+ * Date: November 11th, 2017
+ * Log: Starting to implement deadlock algorithm
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,10 +31,13 @@ int globalProcessCount = 0;
 bool verbose = 0;
 int grantedRequests = 0;
 int lineCount = 0;
+bool deadlockedProcesses[18];
 
 void checkRequests(int*, pStruct*, rStruct*, int*, FILE*);
 
-bool req_lt_avail(const int*, const int*, const int, const int);
+bool deadlock(const int*, const int m, const int n, int[20][18], int[20][18], FILE*, int);
+
+bool req_lt_avail(int[20][18], const int*, const int, const int);
 
 union semun{
 	int val;
@@ -81,7 +84,7 @@ int main(int argc, char* argv[]){
 	rStruct* rBlock;
 	pStruct* pBlock;
 	bool tableFull = 0;
-	int lineCount = 0;
+	//int lineCount = 0;
 
 	//SIGNAL HANDLING
 	signal(SIGINT, clean);
@@ -170,7 +173,7 @@ int main(int argc, char* argv[]){
 	//**********SHARED MEMORY
 
 	//CREATING PROCESSES
-	int forkTime;
+	///int forkTime;
 	int incrementTime;
 	int lastForkTime[2];
 	//int lastClockTime[2];
@@ -186,7 +189,7 @@ int main(int argc, char* argv[]){
 	//lastClockTime[1] = clock[1];
 	pid_t childpid;
 	srand(time(NULL));
-	forkTime = rand() % 500000000 + 1;
+	//forkTime = rand() % 500000000 + 1;
 	percentShared = rand() % 10 + 15;
 	for(i = 0; i < 20; i++){
 		rBlock[i].num = rand() % 10 + 1;
@@ -195,8 +198,10 @@ int main(int argc, char* argv[]){
 		}else{
 			rBlock[i].shared = false;
 		}
-		if(i < 18)
+		if(i < 18){
 			clearProcess[i] = 0;
+			deadlockedProcesses[i] = false;
+		}
 		for(j = 0; j < 20; j++){
 			if(i > 17)
 				break;
@@ -204,7 +209,8 @@ int main(int argc, char* argv[]){
 		}
 	}
 
-	while(clock[0] < 100 && clock[1] < 500000000){
+	//clock[0] < 500 && clock[1] < 500000000
+	while(1){
 		incrementTime = rand() % 1000;
 		clock[0] += 1;
 		if(clock[1] + incrementTime >= 1000000000){
@@ -226,7 +232,7 @@ int main(int argc, char* argv[]){
 		if((clock[0] - lastForkTime[0]) >= 1 || (clock[0] == lastForkTime[0] && clock[1] - lastForkTime[1] > 500000000)){
 			lastForkTime[0] = clock[0];
 			lastForkTime[1] = clock[1];
-			forkTime = rand() % 3;
+			//forkTime = rand() % 3;
 			for(i = 0; i < 18; i++){
 				if(checkBit(bitArray, i) == 0){
 					tableFull = 0;
@@ -271,33 +277,54 @@ int main(int argc, char* argv[]){
 }
 
 void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FILE* file){
-	sb.sem_op = 1;
-	sb.sem_num = 0;
-	sb.sem_flg = 0;
 	int pIndex = shmMsg[0];
 	int rIndex = shmMsg[2];
+	if(shmMsg[0] == -1 || shmMsg[2] == -1){
+		return;
+	}else{
+		printf("CHECK\n\n\n");
+	}
 	int i, j;
+	bool isDeadlock;
+	int availableVector[20];
+	//bool claimGranted = false;
+	int requestMatrix[20][18];
+	int allocatedMatrix[20][18];
+	int killProcess = -1;
+
+	for (i = 0; i < 20; i++){
+        	for(j = 0; j < 18; j++){
+	 		requestMatrix[i][j] = 0;
+			allocatedMatrix[i][j] = 0;
+		}
+	}
+
 	if(shmMsg[1] == 1){ //process is requesting claim
 		if(verbose && lineCount < 10000){
 			fprintf(file, "Master has detected P%d requesting R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 			lineCount++;
 		}
 
-		if(rBlock[rIndex].numClaimed < rBlock[rIndex].num){ //grant claim request
+		if(rBlock[rIndex].shared || rBlock[rIndex].numClaimed < rBlock[rIndex].num){ //grant claim request
 			printf("OSS: CLAIM %d:%d\n", shmMsg[0], shmMsg[2]);
 			if(verbose && lineCount < 10000){
-				fprintf(file, "Master granting P%d request R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
+				fprintf(file, "Master granting P%d requesting R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 				lineCount++;
 			}
-			rBlock[rIndex].numClaimed++;
+			if(!rBlock[rIndex].shared)
+				rBlock[rIndex].numClaimed++;
 			pBlock[pIndex].numClaimed++;
 			pBlock[pIndex].resourceNum[rIndex]++;
 			grantedRequests++;
+			//claimGranted = true;
+			allocatedMatrix[pIndex][rIndex]++;
 			if(grantedRequests == 20){
 				grantedRequests = 0;
 				if(verbose && lineCount < 10000){
 					fprintf(file, "Current system resources:\n");
+					lineCount++;
 					fprintf(file, "\tR0\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tR10\tR11\tR12\tR13\tR14\tR15\tR16\tR17\tR18\tR19\n");
+					lineCount++;
 					for(i = 0; i < 18; i++){
 						fprintf(file, "P%d\t", i);
 						for(j = 0; j < 20; j++){
@@ -305,19 +332,26 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 
 						}
 						fprintf(file, "\n");
+						lineCount++;
 					}
-					lineCount++;
 				}
 			}
-		}else{ //deny claim request
+		}else if (!rBlock[rIndex].shared){ //deny claim request
+			printf("OSS: DENY %d:%d\tnum:%d numClaimed:%d index: %d\n", shmMsg[0], shmMsg[2], rBlock[rIndex].numClaimed, rBlock[rIndex].num, rIndex);
+
 			if(verbose && lineCount < 10000){
-				fprintf(file, "Master denying P%d request R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
+				fprintf(file, "Master denying P%d requesting R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 				lineCount++;
 			}
+			requestMatrix[pIndex][rIndex]++;
 		}
 		shmMsg[0] = -1;
 		shmMsg[1] = -1;
 		shmMsg[2] = -1;
+		printf("SET BACK\n");	
+		sb.sem_op = 1;
+		sb.sem_num = 0;
+		sb.sem_flg = 0;
 		semop(sharedmem[2], &sb, 1);
 	}else if(shmMsg[1] == 0){ //process is requesting release
 		printf("OSS: RELEASE %d:%d\n", shmMsg[0], shmMsg[2]);
@@ -326,22 +360,85 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 			fprintf(file, "Master has acknowledged P%d releasing R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 			lineCount++;
 		}
-		rBlock[rIndex].numClaimed--;
-		pBlock[pIndex].numClaimed--;
-		pBlock[pIndex].resourceNum[rIndex]--;
+		if(pBlock[pIndex].resourceNum[rIndex] - 1 >= 0){
+			rBlock[rIndex].numClaimed--;
+			pBlock[pIndex].numClaimed--;
+			pBlock[pIndex].resourceNum[rIndex]--;
+		}
 		shmMsg[0] = -1;
 		shmMsg[1] = -1;
 		shmMsg[2] = -1;	
+		printf("SET BACK\n");	
+		sb.sem_op = 1;
+		sb.sem_num = 0;
+		sb.sem_flg = 0;
 		semop(sharedmem[2], &sb, 1);
 	}
+
+
+//	if(claimGranted){
+		for(i = 0; i < 20; i++)
+			availableVector[i] = rBlock[i].num - rBlock[i].numClaimed;
+		/*
+		printf("\tR0\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tR10\tR11\tR12\tR13\tR14\tR15\tR16\tR17\tR18\tR19\n");
+		for(i = 0; i < 18; i++){
+			printf("P%d\t", i);
+			for(j = 0; j < 20; j++){
+				printf("%d\t", pBlock[i].resourceNum[j]);
+			}
+			printf("\n");
+		}
+		*/
+
+		if(lineCount < 50000){
+			fprintf(file, "Master running deadlock detection at time %d:%d\n", clock[0], clock[1]);
+			lineCount++;
+		}
+	
+		isDeadlock = deadlock(availableVector, 20, 18, requestMatrix, allocatedMatrix, file, -1);
+
+		if(isDeadlock && lineCount < 10000){
+			//if(deadlockCount > 0){
+				fprintf(file, "\tProcesses ");
+				for(i = 0; i < 18; i++){
+					if(deadlockedProcesses[i]){
+						fprintf(file, ", P%d", i);
+						if(killProcess == -1)
+							killProcess = i;
+					}
+				}
+				fprintf(file, " deadlocked\n");
+			//}
+			fprintf(file, "\tAttempting to resolve deadlock...\n");
+			lineCount++;
+			fprintf(file, "\tKilling process P%d\n", killProcess);
+			lineCount++;
+		}
+
+//		while(isDeadlock){
+			isDeadlock = deadlock(availableVector, 20, 18, requestMatrix, allocatedMatrix, file, killProcess);
+//			printf("\n\n\nDEADLOCKED\n\n\n");
+//		}
+
+		if(lineCount < 10000){
+			fprintf(file, "System is no longer in deadlock\n");
+			lineCount++;
+		}
+//	}
+
+
 	return;
 }
 
-//DEADLOCK ALGORITHM FROM NOTES
-bool deadlock(const int *available, const int m, const int n, const int *request, const int *allocated){
-	int work[m]; // m resources
-	bool finish[n]; // n processes
+bool deadlock(const int *available, const int m, const int n, int request[20][18], int allocated[20][18], FILE *file, int killed){
+	int work[m];
+	bool finish[n];
 	int i, p;
+
+	if(killed != -1 && lineCount < 10000){
+		fprintf(file, "\tMaster running deadlock detection after P%d killed\n", killed);
+		lineCount++;
+	}
 	for (i = 0; i < m; work[i] = available[i++]);
 	for (i = 0; i < n; finish[i++] = false);
 	for (p = 0; p < n; p++){
@@ -350,21 +447,23 @@ bool deadlock(const int *available, const int m, const int n, const int *request
 		if (req_lt_avail(request, work, p, m)){
 			finish[p] = true;
 			for (i = 0; i < m; i++)
-				work[i] += allocated[p*m+i];
+				work[i] += allocated[p][m+i];
 			p = -1;
 		}
 	}
 
-	for (p = 0; p < n; p++)
+	for (p = 0; p < n; p++){
 		if (!finish[p])
 			break;
+	}
+
 	return (p != n);
 }
 
-bool req_lt_avail(const int *req, const int *avail, const int pnum, const int num_res){
+bool req_lt_avail(int req[20][18], const int *avail, const int pnum, const int num_res){
 	int i;
 	for (i = 0; i < num_res; i++)
-		if (req[pnum*num_res+i] > avail[i])
+		if (req[pnum][num_res+i] > avail[i])
 			break;
 	return (i == num_res);
 }
