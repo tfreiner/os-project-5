@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
  * Date: November 11th, 2017
- * Log: Starting to implement deadlock algorithm 
+ * Log: More work on deadlock algorithm 
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 #include <string.h>
 #include "rstruct.h"
 #include "pstruct.h"
-#define BOUND 5 
+#define BOUND 5
 
 int main(int argc, char* argv[]){
 	struct sembuf sb;
@@ -79,8 +79,8 @@ int main(int argc, char* argv[]){
 					sb.sem_op = -1;
  					sb.sem_num = 0;
  					sb.sem_flg = 0;
-				//	semop(semid, &sb, 1);
-				//	printf("USER: RELEASE %d:%d\n", index, resource);
+					//semop(semid, &sb, 1);
+					//printf("USER: RELEASE %d:%d\n", index, resource);
 					shmMsg[0] = index;
 					shmMsg[1] = 0; //release
 					shmMsg[2] = resource; //resource to release
