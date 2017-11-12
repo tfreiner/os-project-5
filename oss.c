@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
- * Date: November 11th, 2017
- * Log: Fixing bugs 
+ * Date: November 12th, 2017
+ * Log: Signaling user process to terminate
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +25,7 @@
 #define BIT_COUNT 32
 
 struct sembuf sb;
-int sharedmem[5];
+int sharedmem[6];
 int processIds[100];
 int globalProcessCount = 0;
 bool verbose = 0;
@@ -36,8 +36,11 @@ int clearProcess[18];
 int deadlockCount;
 bool wasDeadlock = false;
 int grantedRequestsGlobal = 0;
+int killedProcesses = 0;
+int terminatedProcesses = 0;
+int processCount = 0;
 
-void checkRequests(int*, pStruct*, rStruct*, int*, FILE*);
+void checkRequests(int*, int*, pStruct*, rStruct*, int*, FILE*);
 
 bool deadlock(const int*, const int m, const int n, int[20][18], int[20][18], FILE*, int);
 
@@ -62,12 +65,15 @@ void clean(int sig){
 	semctl(sharedmem[2], 0, IPC_RMID);
 	shmctl(sharedmem[3], IPC_RMID, NULL);
 	shmctl(sharedmem[4], IPC_RMID, NULL);
+	shmctl(sharedmem[5], IPC_RMID, NULL);
 
 	for(i = 0; i < globalProcessCount; i++){
 		kill(processIds[i], SIGKILL);
 	}
 	
-	printf("Granted requests: %d\n", grantedRequestsGlobal);
+	printf("Number of granted requests: %d\n", grantedRequestsGlobal);
+	printf("Number of processes killed by the deadlock detection algorithm: %d\n", killedProcesses);
+	printf("Number of processes that terminated successfully: %d\n", terminatedProcesses);
 	exit(1);
 }
 
@@ -87,7 +93,6 @@ int main(int argc, char* argv[]){
 	union semun arg;
 	arg.val = 1;
 	int i, j, option;
-	int processCount = 0;
 	int bitArray[1] = { 0 };
 	rStruct* rBlock;
 	pStruct* pBlock;
@@ -138,10 +143,12 @@ int main(int argc, char* argv[]){
 	key_t key3 = ftok("keygen3", 1);
 	key_t key4 = ftok("keygen4", 1);
 	key_t key5 = ftok("keygen5", 1);
+	key_t key6 = ftok("keygen6", 1);
 	int memid = shmget(key, sizeof(int*)*2, IPC_CREAT | 0644);
 	int memid2 = shmget(key2, sizeof(struct rStruct) * 20, IPC_CREAT | 0644);
 	int memid3 = shmget(key4, sizeof(int*)*3, IPC_CREAT | 0644);
 	int memid4 = shmget(key5, sizeof(struct pStruct) * 18, IPC_CREAT | 0644);
+	int memid5 = shmget(key6, sizeof(int*)*2, IPC_CREAT | 0644);
 	int semid = semget(key3, 1, IPC_CREAT | 0644);
 	if(memid == -1 || memid2 == -1){
 		fprintf(stderr, "%s: ", argv[0]);
@@ -152,8 +159,10 @@ int main(int argc, char* argv[]){
 	sharedmem[2] = semid;
 	sharedmem[3] = memid3;
 	sharedmem[4] = memid4;
+	sharedmem[5] = memid5;
 	int *clock = (int *)shmat(memid, NULL, 0);
 	int *shmMsg = (int *)shmat(memid3, NULL, 0);
+	int *termMsg = (int *)shmat(memid5, NULL, 0);
 	rBlock = (struct rStruct *)shmat(memid2, NULL, 0);
 	pBlock = (struct pStruct *)shmat(memid4, NULL, 0);
 	if(*clock == -1 || (int*)rBlock == (int*)-1 || (int*)pBlock == (int*)-1){
@@ -164,8 +173,10 @@ int main(int argc, char* argv[]){
 	int clockVal = 0;
 	int messageVal = -1;
 	for(i = 0; i < 3; i++){
-		if(i != 2)
+		if(i != 2){
 			memcpy(&clock[i], &clockVal, 4);
+			memcpy(&termMsg[i], &clockVal, 4);
+		}
 		memcpy(&shmMsg[i], &messageVal, 4);
 	}
 	
@@ -250,6 +261,7 @@ int main(int argc, char* argv[]){
 				tableFull = 1;
 			}
 			if(!tableFull){
+				printf("PROCESS COUNT: %d\n", globalProcessCount);
 				childpid = fork();
 				processCountHere++;
 				if(errno){
@@ -275,18 +287,20 @@ int main(int argc, char* argv[]){
 				}
 			}
 		}
-		checkRequests(shmMsg, pBlock, rBlock, clock, file);
+		checkRequests(shmMsg, termMsg, pBlock, rBlock, clock, file);
 	}
 
 	sleep(20);
-	printf("Granted requests: %d\n", grantedRequestsGlobal);
+	printf("Number of granted requests: %d\n", grantedRequestsGlobal);
+	printf("Number of processes killed by the deadlock detection algorithm: %d\n", killedProcesses);
+	printf("Number of processes that terminated successfully: %d\n", terminatedProcesses);
 	fclose(file);
 	clean(1);
 	
 	return 0;
 }
 
-void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FILE* file){
+void checkRequests(int *shmMsg, int *termMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FILE* file){
 	int pIndex = shmMsg[0];
 	int rIndex = shmMsg[2];
 	if(shmMsg[0] == -1 || shmMsg[2] == -1)
@@ -314,7 +328,6 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 		}
 
 		if(rBlock[rIndex].shared || rBlock[rIndex].numClaimed < rBlock[rIndex].num){ //grant claim request
-			//printf("OSS: CLAIM %d:%d\n", shmMsg[0], shmMsg[2]);
 			if(verbose && lineCount < 10000){
 				fprintf(file, "Master granting P%d requesting R%d at time %d:%d\n", shmMsg[0], shmMsg[2], clock[0], clock[1]);
 				lineCount++;
@@ -376,6 +389,16 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 		sb.sem_num = 0;
 		sb.sem_flg = 0;
 		semop(sharedmem[2], &sb, 1);
+	}else if(shmMsg[1] == 2){ // process is terminating
+		terminatedProcesses++;
+		if(verbose && lineCount < 10000){
+			fprintf(file, "Master has acknowledged P%d is terminating at time %d:%d\n", shmMsg[0], clock[0], clock[1]);
+			lineCount++;
+		}
+
+
+
+
 	}
 //	if(claimGranted){
 		for(i = 0; i < 20; i++)
@@ -443,8 +466,15 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 			}
 		}
 		if(killProcess != -1){
-			//kill(pBlock[killProcess].pid, SIGKILL);
+			killedProcesses++;
+		//	sb.sem_op = -1;
+		//	sb.sem_num = 0;
+		//	sb.sem_flg = 0;
+		//	semop(sharedmem[2], &sb, 1);
+			termMsg[0] = killProcess;
+			termMsg[1] = 1; //signal process to exit
 			waitpid(pBlock[killProcess].pid, NULL, 0);
+			processCount--;
 		//	pBlock[killProcess].numClaimed = -1;
 		//	pBlock[killProcess].pid = -1;
 			clearProcess[killProcess] = 1;
@@ -455,13 +485,15 @@ void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FI
 //		while(isDeadlock){
 //			isDeadlock = deadlock(availableVector, 20, 18, requestMatrix, allocatedMatrix, file, killProcess);
 //		}
-
 		if(wasDeadlock && lineCount < 10000){
 			fprintf(file, "System is no longer in deadlock\n");
 			lineCount++;
+			wasDeadlock = false;
 		}else if(!wasDeadlock && lineCount < 10000){
 			fprintf(file, "Master did not detect a deadlock\n");
 			lineCount++;
+		}else if(wasDeadlock){
+			wasDeadlock = false;
 		}
 //	}
 
@@ -496,7 +528,6 @@ bool deadlock(const int *available, const int m, const int n, int request[20][18
 			deadlockedProcesses[p] = 1;
 			deadlockCount++;
 			isDeadlocked = true;
-	//		break;
 		}
 	}
 

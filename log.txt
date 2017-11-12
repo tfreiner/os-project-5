@@ -1,39 +1,1123 @@
-Master running deadlock detection at time 8:4194
+Master running deadlock detection at time 10:5955
 Master did not detect a deadlock
-Master running deadlock detection at time 9:4737
+Master running deadlock detection at time 11:6848
 Master did not detect a deadlock
-Master running deadlock detection at time 10:5111
+Master running deadlock detection at time 12:7270
 Master did not detect a deadlock
-Master running deadlock detection at time 11:5766
+Master running deadlock detection at time 13:7728
 Master did not detect a deadlock
-Master running deadlock detection at time 12:6744
+Master running deadlock detection at time 14:8071
 Master did not detect a deadlock
-Master running deadlock detection at time 13:7088
+Master running deadlock detection at time 15:8383
 Master did not detect a deadlock
-Master running deadlock detection at time 14:7415
+Master running deadlock detection at time 16:9356
 Master did not detect a deadlock
-Master running deadlock detection at time 15:7458
+Master running deadlock detection at time 17:9640
 Master did not detect a deadlock
-Master running deadlock detection at time 16:8285
+Master running deadlock detection at time 18:10207
 Master did not detect a deadlock
-Master running deadlock detection at time 17:8869
+Master running deadlock detection at time 19:10420
 Master did not detect a deadlock
-Master running deadlock detection at time 18:9780
+Master running deadlock detection at time 20:10574
 Master did not detect a deadlock
-Master running deadlock detection at time 19:10664
+Master running deadlock detection at time 21:10721
 Master did not detect a deadlock
-Master running deadlock detection at time 20:10825
+Master running deadlock detection at time 22:11678
 Master did not detect a deadlock
-Master running deadlock detection at time 21:11229
+Master running deadlock detection at time 23:12663
 Master did not detect a deadlock
-Master running deadlock detection at time 22:11385
+Master running deadlock detection at time 24:12984
 Master did not detect a deadlock
-Master running deadlock detection at time 23:11891
+Master running deadlock detection at time 25:13261
 Master did not detect a deadlock
-Master running deadlock detection at time 24:12754
+Master running deadlock detection at time 26:13526
 Master did not detect a deadlock
-Master running deadlock detection at time 25:12908
-	Process P0 deadlocked
+Master running deadlock detection at time 27:13706
+Master did not detect a deadlock
+Master running deadlock detection at time 28:14190
+Master did not detect a deadlock
+Master running deadlock detection at time 29:14854
+Master did not detect a deadlock
+Master running deadlock detection at time 30:15349
+Master did not detect a deadlock
+Master running deadlock detection at time 31:15806
+Master did not detect a deadlock
+Master running deadlock detection at time 32:16267
+Master did not detect a deadlock
+Master running deadlock detection at time 33:17021
+Master did not detect a deadlock
+Master running deadlock detection at time 34:17515
+Master did not detect a deadlock
+Master running deadlock detection at time 35:17553
+Master did not detect a deadlock
+Master running deadlock detection at time 36:18157
+Master did not detect a deadlock
+Master running deadlock detection at time 37:19101
+Master did not detect a deadlock
+Master running deadlock detection at time 38:19940
+Master did not detect a deadlock
+Master running deadlock detection at time 39:20425
+Master did not detect a deadlock
+Master running deadlock detection at time 40:21088
+Master did not detect a deadlock
+Master running deadlock detection at time 41:21922
+Master did not detect a deadlock
+Master running deadlock detection at time 42:22301
+Master did not detect a deadlock
+Master running deadlock detection at time 43:22386
+Master did not detect a deadlock
+Master running deadlock detection at time 44:22678
+Master did not detect a deadlock
+Master running deadlock detection at time 45:22752
+Master did not detect a deadlock
+Master running deadlock detection at time 46:23501
+Master did not detect a deadlock
+Master running deadlock detection at time 47:24119
+Master did not detect a deadlock
+Master running deadlock detection at time 48:24477
+Master did not detect a deadlock
+Master running deadlock detection at time 49:25145
+Master did not detect a deadlock
+Master running deadlock detection at time 50:25976
+Master did not detect a deadlock
+Master running deadlock detection at time 51:26840
+Master did not detect a deadlock
+Master running deadlock detection at time 52:27655
+Master did not detect a deadlock
+Master running deadlock detection at time 53:27796
+Master did not detect a deadlock
+Master running deadlock detection at time 54:28646
+Master did not detect a deadlock
+Master running deadlock detection at time 55:28782
+Master did not detect a deadlock
+Master running deadlock detection at time 56:29200
+Master did not detect a deadlock
+Master running deadlock detection at time 57:29667
+Master did not detect a deadlock
+Master running deadlock detection at time 58:30336
+Master did not detect a deadlock
+Master running deadlock detection at time 59:30590
+Master did not detect a deadlock
+Master running deadlock detection at time 60:31073
+Master did not detect a deadlock
+Master running deadlock detection at time 61:31237
+Master did not detect a deadlock
+Master running deadlock detection at time 62:31301
+Master did not detect a deadlock
+Master running deadlock detection at time 63:32245
+Master did not detect a deadlock
+Master running deadlock detection at time 64:32515
+Master did not detect a deadlock
+Master running deadlock detection at time 65:33073
+Master did not detect a deadlock
+Master running deadlock detection at time 66:34056
+Master did not detect a deadlock
+Master running deadlock detection at time 67:34931
+Master did not detect a deadlock
+Master running deadlock detection at time 68:35433
+Master did not detect a deadlock
+Master running deadlock detection at time 69:35607
+Master did not detect a deadlock
+Master running deadlock detection at time 70:36319
+Master did not detect a deadlock
+Master running deadlock detection at time 71:36836
+Master did not detect a deadlock
+Master running deadlock detection at time 72:36845
+Master did not detect a deadlock
+Master running deadlock detection at time 73:36936
+Master did not detect a deadlock
+Master running deadlock detection at time 74:37890
+Master did not detect a deadlock
+Master running deadlock detection at time 75:38543
+Master did not detect a deadlock
+Master running deadlock detection at time 76:39060
+Master did not detect a deadlock
+Master running deadlock detection at time 77:39763
+Master did not detect a deadlock
+Master running deadlock detection at time 78:40034
+Master did not detect a deadlock
+Master running deadlock detection at time 79:40910
+Master did not detect a deadlock
+Master running deadlock detection at time 80:41282
+Master did not detect a deadlock
+Master running deadlock detection at time 81:41737
+Master did not detect a deadlock
+Master running deadlock detection at time 82:41829
+Master did not detect a deadlock
+Master running deadlock detection at time 83:42016
+Master did not detect a deadlock
+Master running deadlock detection at time 84:42612
+Master did not detect a deadlock
+Master running deadlock detection at time 85:43554
+Master did not detect a deadlock
+Master running deadlock detection at time 86:44230
+Master did not detect a deadlock
+Master running deadlock detection at time 87:44596
+Master did not detect a deadlock
+Master running deadlock detection at time 88:45357
+Master did not detect a deadlock
+Master running deadlock detection at time 89:45702
+Master did not detect a deadlock
+Master running deadlock detection at time 90:46322
+Master did not detect a deadlock
+Master running deadlock detection at time 91:46566
+Master did not detect a deadlock
+Master running deadlock detection at time 92:47427
+Master did not detect a deadlock
+Master running deadlock detection at time 93:47463
+Master did not detect a deadlock
+Master running deadlock detection at time 94:47652
+Master did not detect a deadlock
+Master running deadlock detection at time 95:47784
+Master did not detect a deadlock
+Master running deadlock detection at time 96:48378
+Master did not detect a deadlock
+Master running deadlock detection at time 97:48902
+Master did not detect a deadlock
+Master running deadlock detection at time 98:49261
+Master did not detect a deadlock
+Master running deadlock detection at time 99:49710
+Master did not detect a deadlock
+Master running deadlock detection at time 100:49760
+Master did not detect a deadlock
+Master running deadlock detection at time 101:49831
+Master did not detect a deadlock
+Master running deadlock detection at time 102:50797
+Master did not detect a deadlock
+Master running deadlock detection at time 103:50856
+Master did not detect a deadlock
+Master running deadlock detection at time 104:51371
+Master did not detect a deadlock
+Master running deadlock detection at time 105:52292
+Master did not detect a deadlock
+Master running deadlock detection at time 106:52357
+Master did not detect a deadlock
+Master running deadlock detection at time 107:52389
+Master did not detect a deadlock
+Master running deadlock detection at time 108:53365
+Master did not detect a deadlock
+Master running deadlock detection at time 109:53701
+Master did not detect a deadlock
+Master running deadlock detection at time 110:53961
+Master did not detect a deadlock
+Master running deadlock detection at time 111:54309
+Master did not detect a deadlock
+Master running deadlock detection at time 112:54452
+Master did not detect a deadlock
+Master running deadlock detection at time 113:54805
+Master did not detect a deadlock
+Master running deadlock detection at time 114:55693
+Master did not detect a deadlock
+Master running deadlock detection at time 115:56432
+Master did not detect a deadlock
+Master running deadlock detection at time 116:56727
+Master did not detect a deadlock
+Master running deadlock detection at time 117:57291
+Master did not detect a deadlock
+Master running deadlock detection at time 118:57396
+Master did not detect a deadlock
+Master running deadlock detection at time 119:57805
+Master did not detect a deadlock
+Master running deadlock detection at time 120:58714
+Master did not detect a deadlock
+Master running deadlock detection at time 121:58792
+Master did not detect a deadlock
+Master running deadlock detection at time 122:59445
+Master did not detect a deadlock
+Master running deadlock detection at time 123:60215
+Master did not detect a deadlock
+Master running deadlock detection at time 124:60329
+Master did not detect a deadlock
+Master running deadlock detection at time 125:60523
+Master did not detect a deadlock
+Master running deadlock detection at time 126:60777
+Master did not detect a deadlock
+Master running deadlock detection at time 127:60838
+Master did not detect a deadlock
+Master running deadlock detection at time 128:60908
+Master did not detect a deadlock
+Master running deadlock detection at time 129:61521
+Master did not detect a deadlock
+Master running deadlock detection at time 130:62031
+Master did not detect a deadlock
+Master running deadlock detection at time 131:62152
+Master did not detect a deadlock
+Master running deadlock detection at time 132:62837
+Master did not detect a deadlock
+Master running deadlock detection at time 133:63665
+Master did not detect a deadlock
+Master running deadlock detection at time 134:64197
+Master did not detect a deadlock
+Master running deadlock detection at time 135:64397
+Master did not detect a deadlock
+Master running deadlock detection at time 136:64498
+Master did not detect a deadlock
+Master running deadlock detection at time 137:65095
+Master did not detect a deadlock
+Master running deadlock detection at time 138:65679
+Master did not detect a deadlock
+Master running deadlock detection at time 139:65757
+Master did not detect a deadlock
+Master running deadlock detection at time 140:66043
+Master did not detect a deadlock
+Master running deadlock detection at time 141:66888
+Master did not detect a deadlock
+Master running deadlock detection at time 142:67666
+Master did not detect a deadlock
+Master running deadlock detection at time 143:68095
+Master did not detect a deadlock
+Master running deadlock detection at time 144:68293
+Master did not detect a deadlock
+Master running deadlock detection at time 145:68959
+Master did not detect a deadlock
+Master running deadlock detection at time 146:69128
+Master did not detect a deadlock
+Master running deadlock detection at time 147:69973
+Master did not detect a deadlock
+Master running deadlock detection at time 148:70555
+Master did not detect a deadlock
+Master running deadlock detection at time 149:71181
+Master did not detect a deadlock
+Master running deadlock detection at time 150:71435
+Master did not detect a deadlock
+Master running deadlock detection at time 151:71926
+Master did not detect a deadlock
+Master running deadlock detection at time 152:72630
+Master did not detect a deadlock
+Master running deadlock detection at time 153:72890
+Master did not detect a deadlock
+Master running deadlock detection at time 154:73504
+Master did not detect a deadlock
+Master running deadlock detection at time 155:74323
+Master did not detect a deadlock
+Master running deadlock detection at time 156:75129
+Master did not detect a deadlock
+Master running deadlock detection at time 157:75349
+Master did not detect a deadlock
+Master running deadlock detection at time 158:76229
+Master did not detect a deadlock
+Master running deadlock detection at time 159:77106
+Master did not detect a deadlock
+Master running deadlock detection at time 160:77940
+Master did not detect a deadlock
+Master running deadlock detection at time 161:78682
+Master did not detect a deadlock
+Master running deadlock detection at time 162:79680
+Master did not detect a deadlock
+Master running deadlock detection at time 163:80551
+Master did not detect a deadlock
+Master running deadlock detection at time 164:81473
+Master did not detect a deadlock
+Master running deadlock detection at time 165:82003
+Master did not detect a deadlock
+Master running deadlock detection at time 166:82074
+Master did not detect a deadlock
+Master running deadlock detection at time 167:82098
+Master did not detect a deadlock
+Master running deadlock detection at time 168:82578
+Master did not detect a deadlock
+Master running deadlock detection at time 169:82585
+Master did not detect a deadlock
+Master running deadlock detection at time 170:83039
+Master did not detect a deadlock
+Master running deadlock detection at time 171:83805
+Master did not detect a deadlock
+Master running deadlock detection at time 172:84657
+Master did not detect a deadlock
+Master running deadlock detection at time 173:84889
+Master did not detect a deadlock
+Master running deadlock detection at time 174:85436
+Master did not detect a deadlock
+Master running deadlock detection at time 175:85838
+Master did not detect a deadlock
+Master running deadlock detection at time 176:86089
+Master did not detect a deadlock
+Master running deadlock detection at time 177:86157
+Master did not detect a deadlock
+Master running deadlock detection at time 178:86405
+Master did not detect a deadlock
+Master running deadlock detection at time 179:87238
+Master did not detect a deadlock
+Master running deadlock detection at time 180:87933
+Master did not detect a deadlock
+Master running deadlock detection at time 181:88787
+Master did not detect a deadlock
+Master running deadlock detection at time 182:89464
+Master did not detect a deadlock
+Master running deadlock detection at time 183:89863
+Master did not detect a deadlock
+Master running deadlock detection at time 184:90329
+Master did not detect a deadlock
+Master running deadlock detection at time 185:90972
+Master did not detect a deadlock
+Master running deadlock detection at time 186:91542
+Master did not detect a deadlock
+Master running deadlock detection at time 187:91815
+Master did not detect a deadlock
+Master running deadlock detection at time 188:92678
+Master did not detect a deadlock
+Master running deadlock detection at time 189:93480
+Master did not detect a deadlock
+Master running deadlock detection at time 190:93630
+Master did not detect a deadlock
+Master running deadlock detection at time 191:94327
+Master did not detect a deadlock
+Master running deadlock detection at time 192:94871
+Master did not detect a deadlock
+Master running deadlock detection at time 193:95371
+Master did not detect a deadlock
+Master running deadlock detection at time 194:96291
+Master did not detect a deadlock
+Master running deadlock detection at time 195:96758
+Master did not detect a deadlock
+Master running deadlock detection at time 196:97140
+Master did not detect a deadlock
+Master running deadlock detection at time 197:97483
+Master did not detect a deadlock
+Master running deadlock detection at time 198:98326
+Master did not detect a deadlock
+Master running deadlock detection at time 199:99188
+Master did not detect a deadlock
+Master running deadlock detection at time 200:99539
+Master did not detect a deadlock
+Master running deadlock detection at time 201:99836
+Master did not detect a deadlock
+Master running deadlock detection at time 202:100816
+Master did not detect a deadlock
+Master running deadlock detection at time 203:101019
+Master did not detect a deadlock
+Master running deadlock detection at time 204:101900
+Master did not detect a deadlock
+Master running deadlock detection at time 205:102428
+Master did not detect a deadlock
+Master running deadlock detection at time 206:103386
+Master did not detect a deadlock
+Master running deadlock detection at time 207:103518
+Master did not detect a deadlock
+Master running deadlock detection at time 208:104114
+Master did not detect a deadlock
+Master running deadlock detection at time 209:104672
+Master did not detect a deadlock
+Master running deadlock detection at time 210:104990
+Master did not detect a deadlock
+Master running deadlock detection at time 211:105281
+Master did not detect a deadlock
+Master running deadlock detection at time 212:106045
+Master did not detect a deadlock
+Master running deadlock detection at time 213:107040
+Master did not detect a deadlock
+Master running deadlock detection at time 214:107083
+Master did not detect a deadlock
+Master running deadlock detection at time 215:107314
+Master did not detect a deadlock
+Master running deadlock detection at time 216:107952
+Master did not detect a deadlock
+Master running deadlock detection at time 217:108917
+Master did not detect a deadlock
+Master running deadlock detection at time 218:109773
+Master did not detect a deadlock
+Master running deadlock detection at time 219:110626
+Master did not detect a deadlock
+Master running deadlock detection at time 220:111394
+Master did not detect a deadlock
+Master running deadlock detection at time 221:111752
+Master did not detect a deadlock
+Master running deadlock detection at time 222:112655
+Master did not detect a deadlock
+Master running deadlock detection at time 223:113319
+Master did not detect a deadlock
+Master running deadlock detection at time 224:114177
+Master did not detect a deadlock
+Master running deadlock detection at time 225:115000
+Master did not detect a deadlock
+Master running deadlock detection at time 226:115483
+Master did not detect a deadlock
+Master running deadlock detection at time 227:115723
+Master did not detect a deadlock
+Master running deadlock detection at time 228:115890
+Master did not detect a deadlock
+Master running deadlock detection at time 229:116216
+Master did not detect a deadlock
+Master running deadlock detection at time 230:116671
+Master did not detect a deadlock
+Master running deadlock detection at time 231:117189
+Master did not detect a deadlock
+Master running deadlock detection at time 232:118164
+Master did not detect a deadlock
+Master running deadlock detection at time 233:118599
+Master did not detect a deadlock
+Master running deadlock detection at time 234:118672
+Master did not detect a deadlock
+Master running deadlock detection at time 235:119529
+Master did not detect a deadlock
+Master running deadlock detection at time 236:120492
+Master did not detect a deadlock
+Master running deadlock detection at time 237:120875
+Master did not detect a deadlock
+Master running deadlock detection at time 238:121216
+Master did not detect a deadlock
+Master running deadlock detection at time 239:122128
+Master did not detect a deadlock
+Master running deadlock detection at time 240:123069
+Master did not detect a deadlock
+Master running deadlock detection at time 241:123728
+Master did not detect a deadlock
+Master running deadlock detection at time 242:124283
+Master did not detect a deadlock
+Master running deadlock detection at time 243:124989
+Master did not detect a deadlock
+Master running deadlock detection at time 244:124995
+Master did not detect a deadlock
+Master running deadlock detection at time 245:125593
+Master did not detect a deadlock
+Master running deadlock detection at time 246:126530
+Master did not detect a deadlock
+Master running deadlock detection at time 247:127174
+Master did not detect a deadlock
+Master running deadlock detection at time 248:128090
+Master did not detect a deadlock
+Master running deadlock detection at time 249:128235
+Master did not detect a deadlock
+Master running deadlock detection at time 250:129085
+Master did not detect a deadlock
+Master running deadlock detection at time 251:129769
+Master did not detect a deadlock
+Master running deadlock detection at time 252:130272
+Master did not detect a deadlock
+Master running deadlock detection at time 253:131025
+Master did not detect a deadlock
+Master running deadlock detection at time 254:131725
+Master did not detect a deadlock
+Master running deadlock detection at time 255:132086
+Master did not detect a deadlock
+Master running deadlock detection at time 256:132662
+Master did not detect a deadlock
+Master running deadlock detection at time 257:133198
+Master did not detect a deadlock
+Master running deadlock detection at time 258:134151
+Master did not detect a deadlock
+Master running deadlock detection at time 259:134894
+Master did not detect a deadlock
+Master running deadlock detection at time 260:135108
+Master did not detect a deadlock
+Master running deadlock detection at time 261:135516
+Master did not detect a deadlock
+Master running deadlock detection at time 262:136129
+Master did not detect a deadlock
+Master running deadlock detection at time 263:136319
+Master did not detect a deadlock
+Master running deadlock detection at time 264:137163
+Master did not detect a deadlock
+Master running deadlock detection at time 265:137202
+Master did not detect a deadlock
+Master running deadlock detection at time 266:137601
+Master did not detect a deadlock
+Master running deadlock detection at time 267:138408
+Master did not detect a deadlock
+Master running deadlock detection at time 268:138830
+Master did not detect a deadlock
+Master running deadlock detection at time 269:138922
+Master did not detect a deadlock
+Master running deadlock detection at time 270:138993
+Master did not detect a deadlock
+Master running deadlock detection at time 271:139357
+Master did not detect a deadlock
+Master running deadlock detection at time 272:140109
+Master did not detect a deadlock
+Master running deadlock detection at time 273:140736
+Master did not detect a deadlock
+Master running deadlock detection at time 274:141158
+Master did not detect a deadlock
+Master running deadlock detection at time 275:141268
+Master did not detect a deadlock
+Master running deadlock detection at time 276:141493
+Master did not detect a deadlock
+Master running deadlock detection at time 277:142204
+Master did not detect a deadlock
+Master running deadlock detection at time 278:142311
+Master did not detect a deadlock
+Master running deadlock detection at time 279:142804
+Master did not detect a deadlock
+Master running deadlock detection at time 280:143660
+Master did not detect a deadlock
+Master running deadlock detection at time 281:144617
+Master did not detect a deadlock
+Master running deadlock detection at time 282:145146
+Master did not detect a deadlock
+Master running deadlock detection at time 283:145505
+Master did not detect a deadlock
+Master running deadlock detection at time 284:146215
+Master did not detect a deadlock
+Master running deadlock detection at time 285:146445
+Master did not detect a deadlock
+Master running deadlock detection at time 286:147165
+Master did not detect a deadlock
+Master running deadlock detection at time 287:147451
+Master did not detect a deadlock
+Master running deadlock detection at time 288:148217
+Master did not detect a deadlock
+Master running deadlock detection at time 289:148890
+Master did not detect a deadlock
+Master running deadlock detection at time 290:149272
+Master did not detect a deadlock
+Master running deadlock detection at time 291:149604
+Master did not detect a deadlock
+Master running deadlock detection at time 292:149686
+Master did not detect a deadlock
+Master running deadlock detection at time 293:150033
+Master did not detect a deadlock
+Master running deadlock detection at time 294:150555
+Master did not detect a deadlock
+Master running deadlock detection at time 295:151481
+Master did not detect a deadlock
+Master running deadlock detection at time 296:152219
+Master did not detect a deadlock
+Master running deadlock detection at time 297:152492
+Master did not detect a deadlock
+Master running deadlock detection at time 298:152577
+Master did not detect a deadlock
+Master running deadlock detection at time 299:152738
+Master did not detect a deadlock
+Master running deadlock detection at time 300:153104
+Master did not detect a deadlock
+Master running deadlock detection at time 301:153261
+Master did not detect a deadlock
+Master running deadlock detection at time 302:154138
+Master did not detect a deadlock
+Master running deadlock detection at time 303:154608
+Master did not detect a deadlock
+Master running deadlock detection at time 304:155392
+Master did not detect a deadlock
+Master running deadlock detection at time 305:155691
+Master did not detect a deadlock
+Master running deadlock detection at time 306:156623
+Master did not detect a deadlock
+Master running deadlock detection at time 307:156984
+Master did not detect a deadlock
+Master running deadlock detection at time 308:156994
+Master did not detect a deadlock
+Master running deadlock detection at time 309:157033
+Master did not detect a deadlock
+Master running deadlock detection at time 310:157240
+Master did not detect a deadlock
+Master running deadlock detection at time 311:157458
+Master did not detect a deadlock
+Master running deadlock detection at time 312:158454
+Master did not detect a deadlock
+Master running deadlock detection at time 313:159190
+Master did not detect a deadlock
+Master running deadlock detection at time 314:159767
+Master did not detect a deadlock
+Master running deadlock detection at time 315:160473
+Master did not detect a deadlock
+Master running deadlock detection at time 316:161439
+Master did not detect a deadlock
+Master running deadlock detection at time 317:161736
+Master did not detect a deadlock
+Master running deadlock detection at time 318:162081
+Master did not detect a deadlock
+Master running deadlock detection at time 319:162165
+Master did not detect a deadlock
+Master running deadlock detection at time 320:162487
+Master did not detect a deadlock
+Master running deadlock detection at time 321:163214
+Master did not detect a deadlock
+Master running deadlock detection at time 322:163631
+Master did not detect a deadlock
+Master running deadlock detection at time 323:164035
+Master did not detect a deadlock
+Master running deadlock detection at time 324:164461
+Master did not detect a deadlock
+Master running deadlock detection at time 325:164752
+Master did not detect a deadlock
+Master running deadlock detection at time 326:165434
+Master did not detect a deadlock
+Master running deadlock detection at time 327:165599
+Master did not detect a deadlock
+Master running deadlock detection at time 328:166516
+Master did not detect a deadlock
+Master running deadlock detection at time 329:166636
+Master did not detect a deadlock
+Master running deadlock detection at time 330:167314
+Master did not detect a deadlock
+Master running deadlock detection at time 331:167949
+Master did not detect a deadlock
+Master running deadlock detection at time 332:168226
+Master did not detect a deadlock
+Master running deadlock detection at time 333:169133
+Master did not detect a deadlock
+Master running deadlock detection at time 334:169590
+Master did not detect a deadlock
+Master running deadlock detection at time 335:170003
+Master did not detect a deadlock
+Master running deadlock detection at time 336:170561
+Master did not detect a deadlock
+Master running deadlock detection at time 337:170950
+Master did not detect a deadlock
+Master running deadlock detection at time 338:171076
+Master did not detect a deadlock
+Master running deadlock detection at time 339:171996
+Master did not detect a deadlock
+Master running deadlock detection at time 340:172425
+Master did not detect a deadlock
+Master running deadlock detection at time 341:172758
+Master did not detect a deadlock
+Master running deadlock detection at time 342:172896
+Master did not detect a deadlock
+Master running deadlock detection at time 343:173321
+Master did not detect a deadlock
+Master running deadlock detection at time 344:173391
+Master did not detect a deadlock
+Master running deadlock detection at time 345:174106
+Master did not detect a deadlock
+Master running deadlock detection at time 346:174590
+Master did not detect a deadlock
+Master running deadlock detection at time 347:174978
+Master did not detect a deadlock
+Master running deadlock detection at time 348:174990
+Master did not detect a deadlock
+Master running deadlock detection at time 349:175819
+Master did not detect a deadlock
+Master running deadlock detection at time 350:176644
+Master did not detect a deadlock
+Master running deadlock detection at time 351:176978
+Master did not detect a deadlock
+Master running deadlock detection at time 352:177886
+Master did not detect a deadlock
+Master running deadlock detection at time 353:178480
+Master did not detect a deadlock
+Master running deadlock detection at time 354:178571
+Master did not detect a deadlock
+Master running deadlock detection at time 355:178905
+Master did not detect a deadlock
+Master running deadlock detection at time 356:179142
+Master did not detect a deadlock
+Master running deadlock detection at time 357:179915
+Master did not detect a deadlock
+Master running deadlock detection at time 358:180414
+Master did not detect a deadlock
+Master running deadlock detection at time 359:180568
+Master did not detect a deadlock
+Master running deadlock detection at time 360:181461
+Master did not detect a deadlock
+Master running deadlock detection at time 361:181990
+Master did not detect a deadlock
+Master running deadlock detection at time 362:182131
+Master did not detect a deadlock
+Master running deadlock detection at time 363:182653
+Master did not detect a deadlock
+Master running deadlock detection at time 364:183089
+Master did not detect a deadlock
+Master running deadlock detection at time 365:183687
+Master did not detect a deadlock
+Master running deadlock detection at time 366:183974
+Master did not detect a deadlock
+Master running deadlock detection at time 367:184968
+Master did not detect a deadlock
+Master running deadlock detection at time 368:185956
+Master did not detect a deadlock
+Master running deadlock detection at time 369:186370
+Master did not detect a deadlock
+Master running deadlock detection at time 370:187284
+Master did not detect a deadlock
+Master running deadlock detection at time 371:187701
+Master did not detect a deadlock
+Master running deadlock detection at time 372:187800
+Master did not detect a deadlock
+Master running deadlock detection at time 373:187852
+Master did not detect a deadlock
+Master running deadlock detection at time 374:188046
+Master did not detect a deadlock
+Master running deadlock detection at time 375:188567
+Master did not detect a deadlock
+Master running deadlock detection at time 376:189334
+Master did not detect a deadlock
+Master running deadlock detection at time 377:190012
+Master did not detect a deadlock
+Master running deadlock detection at time 378:190274
+Master did not detect a deadlock
+Master running deadlock detection at time 379:190405
+Master did not detect a deadlock
+Master running deadlock detection at time 380:190912
+Master did not detect a deadlock
+Master running deadlock detection at time 381:191351
+Master did not detect a deadlock
+Master running deadlock detection at time 382:191817
+Master did not detect a deadlock
+Master running deadlock detection at time 383:192584
+Master did not detect a deadlock
+Master running deadlock detection at time 384:192617
+Master did not detect a deadlock
+Master running deadlock detection at time 385:193526
+Master did not detect a deadlock
+Master running deadlock detection at time 386:193628
+	Process P11 deadlocked
 	Attempting to resolve deadlock...
-	Killing process P0
-		Resources released are as follows: R5:5 R9:1 R10:1 
+	Killing process P11
+		Resources released are as follows: R2:49 R13:2 
+System is no longer in deadlock
+Master running deadlock detection at time 387:194250
+Master did not detect a deadlock
+Master running deadlock detection at time 388:194932
+Master did not detect a deadlock
+Master running deadlock detection at time 389:195885
+Master did not detect a deadlock
+Master running deadlock detection at time 390:196662
+Master did not detect a deadlock
+Master running deadlock detection at time 391:197590
+Master did not detect a deadlock
+Master running deadlock detection at time 392:198073
+Master did not detect a deadlock
+Master running deadlock detection at time 393:198991
+Master did not detect a deadlock
+Master running deadlock detection at time 394:199793
+Master did not detect a deadlock
+Master running deadlock detection at time 395:200712
+Master did not detect a deadlock
+Master running deadlock detection at time 396:201581
+Master did not detect a deadlock
+Master running deadlock detection at time 397:201671
+Master did not detect a deadlock
+Master running deadlock detection at time 398:201937
+Master did not detect a deadlock
+Master running deadlock detection at time 399:202794
+Master did not detect a deadlock
+Master running deadlock detection at time 400:203298
+Master did not detect a deadlock
+Master running deadlock detection at time 401:203478
+Master did not detect a deadlock
+Master running deadlock detection at time 402:203752
+Master did not detect a deadlock
+Master running deadlock detection at time 403:204707
+Master did not detect a deadlock
+Master running deadlock detection at time 404:204940
+Master did not detect a deadlock
+Master running deadlock detection at time 405:205408
+Master did not detect a deadlock
+Master running deadlock detection at time 406:205885
+Master did not detect a deadlock
+Master running deadlock detection at time 407:206237
+Master did not detect a deadlock
+Master running deadlock detection at time 408:206736
+Master did not detect a deadlock
+Master running deadlock detection at time 409:206827
+Master did not detect a deadlock
+Master running deadlock detection at time 410:207311
+Master did not detect a deadlock
+Master running deadlock detection at time 411:207669
+Master did not detect a deadlock
+Master running deadlock detection at time 412:208199
+Master did not detect a deadlock
+Master running deadlock detection at time 413:208501
+Master did not detect a deadlock
+Master running deadlock detection at time 414:208627
+Master did not detect a deadlock
+Master running deadlock detection at time 415:209190
+Master did not detect a deadlock
+Master running deadlock detection at time 416:209401
+Master did not detect a deadlock
+Master running deadlock detection at time 417:209981
+Master did not detect a deadlock
+Master running deadlock detection at time 418:210166
+Master did not detect a deadlock
+Master running deadlock detection at time 419:210411
+Master did not detect a deadlock
+Master running deadlock detection at time 420:210944
+Master did not detect a deadlock
+Master running deadlock detection at time 421:211258
+	Process P11 deadlocked
+	Attempting to resolve deadlock...
+	Killing process P11
+		Resources released are as follows: R2:49 R13:2 
+System is no longer in deadlock
+Master running deadlock detection at time 422:211783
+Master did not detect a deadlock
+Master running deadlock detection at time 423:212151
+Master did not detect a deadlock
+Master running deadlock detection at time 424:212736
+Master did not detect a deadlock
+Master running deadlock detection at time 425:213064
+Master did not detect a deadlock
+Master running deadlock detection at time 426:213704
+Master did not detect a deadlock
+Master running deadlock detection at time 427:214158
+Master did not detect a deadlock
+Master running deadlock detection at time 428:214576
+Master did not detect a deadlock
+Master running deadlock detection at time 429:215482
+Master did not detect a deadlock
+Master running deadlock detection at time 430:215793
+Master did not detect a deadlock
+Master running deadlock detection at time 431:216067
+Master did not detect a deadlock
+Master running deadlock detection at time 432:216153
+Master did not detect a deadlock
+Master running deadlock detection at time 433:217090
+Master did not detect a deadlock
+Master running deadlock detection at time 434:217671
+Master did not detect a deadlock
+Master running deadlock detection at time 435:218342
+Master did not detect a deadlock
+Master running deadlock detection at time 436:219099
+Master did not detect a deadlock
+Master running deadlock detection at time 437:219157
+Master did not detect a deadlock
+Master running deadlock detection at time 438:219181
+Master did not detect a deadlock
+Master running deadlock detection at time 439:219437
+Master did not detect a deadlock
+Master running deadlock detection at time 440:219938
+Master did not detect a deadlock
+Master running deadlock detection at time 441:220798
+Master did not detect a deadlock
+Master running deadlock detection at time 442:221765
+Master did not detect a deadlock
+Master running deadlock detection at time 443:221796
+Master did not detect a deadlock
+Master running deadlock detection at time 444:221958
+Master did not detect a deadlock
+Master running deadlock detection at time 445:222051
+Master did not detect a deadlock
+Master running deadlock detection at time 446:222997
+Master did not detect a deadlock
+Master running deadlock detection at time 447:223722
+Master did not detect a deadlock
+Master running deadlock detection at time 448:223747
+Master did not detect a deadlock
+Master running deadlock detection at time 449:224231
+Master did not detect a deadlock
+Master running deadlock detection at time 450:224553
+Master did not detect a deadlock
+Master running deadlock detection at time 451:225111
+	Process P11 deadlocked
+	Attempting to resolve deadlock...
+	Killing process P11
+		Resources released are as follows: R2:49 R13:2 
+System is no longer in deadlock
+Master running deadlock detection at time 452:225261
+Master did not detect a deadlock
+Master running deadlock detection at time 453:226109
+Master did not detect a deadlock
+Master running deadlock detection at time 454:226388
+Master did not detect a deadlock
+Master running deadlock detection at time 455:227123
+Master did not detect a deadlock
+Master running deadlock detection at time 456:227651
+Master did not detect a deadlock
+Master running deadlock detection at time 457:228570
+Master did not detect a deadlock
+Master running deadlock detection at time 458:229111
+Master did not detect a deadlock
+Master running deadlock detection at time 459:230057
+Master did not detect a deadlock
+Master running deadlock detection at time 460:230234
+Master did not detect a deadlock
+Master running deadlock detection at time 461:230438
+Master did not detect a deadlock
+Master running deadlock detection at time 462:231010
+Master did not detect a deadlock
+Master running deadlock detection at time 463:231273
+Master did not detect a deadlock
+Master running deadlock detection at time 464:231766
+Master did not detect a deadlock
+Master running deadlock detection at time 465:231919
+Master did not detect a deadlock
+Master running deadlock detection at time 466:232206
+Master did not detect a deadlock
+Master running deadlock detection at time 467:232457
+Master did not detect a deadlock
+Master running deadlock detection at time 468:233021
+Master did not detect a deadlock
+Master running deadlock detection at time 469:233332
+Master did not detect a deadlock
+Master running deadlock detection at time 470:234191
+Master did not detect a deadlock
+Master running deadlock detection at time 471:234256
+Master did not detect a deadlock
+Master running deadlock detection at time 472:234779
+Master did not detect a deadlock
+Master running deadlock detection at time 473:235605
+Master did not detect a deadlock
+Master running deadlock detection at time 474:236054
+Master did not detect a deadlock
+Master running deadlock detection at time 475:236091
+Master did not detect a deadlock
+Master running deadlock detection at time 476:236362
+Master did not detect a deadlock
+Master running deadlock detection at time 477:236757
+Master did not detect a deadlock
+Master running deadlock detection at time 478:237519
+Master did not detect a deadlock
+Master running deadlock detection at time 479:237815
+Master did not detect a deadlock
+Master running deadlock detection at time 480:238694
+Master did not detect a deadlock
+Master running deadlock detection at time 481:239130
+	Process P11 deadlocked
+	Attempting to resolve deadlock...
+	Killing process P11
+		Resources released are as follows: R2:49 R13:2 
+System is no longer in deadlock
+Master running deadlock detection at time 482:239337
+Master did not detect a deadlock
+Master running deadlock detection at time 483:239367
+Master did not detect a deadlock
+Master running deadlock detection at time 484:239651
+Master did not detect a deadlock
+Master running deadlock detection at time 485:240137
+Master did not detect a deadlock
+Master running deadlock detection at time 486:240254
+Master did not detect a deadlock
+Master running deadlock detection at time 487:240418
+Master did not detect a deadlock
+Master running deadlock detection at time 488:241175
+Master did not detect a deadlock
+Master running deadlock detection at time 489:241186
+Master did not detect a deadlock
+Master running deadlock detection at time 490:241648
+Master did not detect a deadlock
+Master running deadlock detection at time 491:242582
+Master did not detect a deadlock
+Master running deadlock detection at time 492:242797
+Master did not detect a deadlock
+Master running deadlock detection at time 493:242831
+Master did not detect a deadlock
+Master running deadlock detection at time 494:243380
+Master did not detect a deadlock
+Master running deadlock detection at time 495:244089
+Master did not detect a deadlock
+Master running deadlock detection at time 496:244277
+Master did not detect a deadlock
+Master running deadlock detection at time 497:245113
+Master did not detect a deadlock
+Master running deadlock detection at time 498:246073
+Master did not detect a deadlock
+Master running deadlock detection at time 499:246177
+Master did not detect a deadlock
+Master running deadlock detection at time 500:246676
+Master did not detect a deadlock
+Master running deadlock detection at time 501:246847
+Master did not detect a deadlock
+Master running deadlock detection at time 502:247368
+Master did not detect a deadlock
+Master running deadlock detection at time 503:247390
+Master did not detect a deadlock
+Master running deadlock detection at time 504:248388
+Master did not detect a deadlock
+Master running deadlock detection at time 505:249358
+Master did not detect a deadlock
+Master running deadlock detection at time 506:249417
+Master did not detect a deadlock
+Master running deadlock detection at time 507:250038
+Master did not detect a deadlock
+Master running deadlock detection at time 508:250404
+Master did not detect a deadlock
+Master running deadlock detection at time 509:250577
+Master did not detect a deadlock
+Master running deadlock detection at time 510:251495
+Master did not detect a deadlock
+Master running deadlock detection at time 511:252092
+Master did not detect a deadlock
+Master running deadlock detection at time 512:252702
+Master did not detect a deadlock
+Master running deadlock detection at time 513:252827
+Master did not detect a deadlock
+Master running deadlock detection at time 514:253806
+Master did not detect a deadlock
+Master running deadlock detection at time 515:254052
+Master did not detect a deadlock
+Master running deadlock detection at time 516:255015
+Master did not detect a deadlock
+Master running deadlock detection at time 517:255112
+Master did not detect a deadlock
+Master running deadlock detection at time 518:255523
+Master did not detect a deadlock
+Master running deadlock detection at time 519:255595
+Master did not detect a deadlock
+Master running deadlock detection at time 520:255703
+Master did not detect a deadlock
+Master running deadlock detection at time 521:256576
+Master did not detect a deadlock
+Master running deadlock detection at time 522:256934
+Master did not detect a deadlock
+Master running deadlock detection at time 523:257609
+Master did not detect a deadlock
+Master running deadlock detection at time 524:258517
+Master did not detect a deadlock
+Master running deadlock detection at time 525:259424
+Master did not detect a deadlock
+Master running deadlock detection at time 526:259808
+Master did not detect a deadlock
+Master running deadlock detection at time 527:260256
+Master did not detect a deadlock
+Master running deadlock detection at time 528:261000
+Master did not detect a deadlock
+Master running deadlock detection at time 529:261696
+Master did not detect a deadlock
+Master running deadlock detection at time 530:262600
+Master did not detect a deadlock
+Master running deadlock detection at time 531:263195
+Master did not detect a deadlock
+Master running deadlock detection at time 532:263415
+Master did not detect a deadlock
+Master running deadlock detection at time 533:263840
+Master did not detect a deadlock
+Master running deadlock detection at time 534:264458
+Master did not detect a deadlock
+Master running deadlock detection at time 535:264676
+Master did not detect a deadlock
+Master running deadlock detection at time 536:265424
+Master did not detect a deadlock
+Master running deadlock detection at time 537:265453
+Master did not detect a deadlock
+Master running deadlock detection at time 538:266292
+Master did not detect a deadlock
+Master running deadlock detection at time 539:266406
+Master did not detect a deadlock
+Master running deadlock detection at time 540:266609
+Master did not detect a deadlock
+Master running deadlock detection at time 541:266718
+Master did not detect a deadlock
+Master running deadlock detection at time 542:266781
+Master did not detect a deadlock
+Master running deadlock detection at time 543:267594
+Master did not detect a deadlock
+Master running deadlock detection at time 544:268180
+Master did not detect a deadlock
+Master running deadlock detection at time 545:268575
+Master did not detect a deadlock
+Master running deadlock detection at time 546:268634
+Master did not detect a deadlock
+Master running deadlock detection at time 547:269535
+Master did not detect a deadlock
+Master running deadlock detection at time 548:270379
+Master did not detect a deadlock
+Master running deadlock detection at time 549:271201
+Master did not detect a deadlock
+Master running deadlock detection at time 550:272174
+Master did not detect a deadlock
+Master running deadlock detection at time 551:272478
+Master did not detect a deadlock
+Master running deadlock detection at time 552:273174
+Master did not detect a deadlock
+Master running deadlock detection at time 553:273505
+Master did not detect a deadlock
+Master running deadlock detection at time 554:274484
+Master did not detect a deadlock
+Master running deadlock detection at time 555:275440
+Master did not detect a deadlock
+Master running deadlock detection at time 556:276031
+Master did not detect a deadlock
+Master running deadlock detection at time 557:276747
+Master did not detect a deadlock
+Master running deadlock detection at time 558:277503
+Master did not detect a deadlock
+Master running deadlock detection at time 559:277838
+Master did not detect a deadlock
+Master running deadlock detection at time 560:278602
+Master did not detect a deadlock
+Master running deadlock detection at time 561:279262
+	Process P9 deadlocked
+	Attempting to resolve deadlock...
+	Killing process P9
+		Resources released are as follows: R0:1 R3:2 R9:1 R15:7 R16:4 R19:2 
