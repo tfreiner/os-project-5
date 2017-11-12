@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
  * Date: November 11th, 2017
- * Log: More work on deadlock algorithm 
+ * Log: Fixing bugs 
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 				sb.sem_op = -1;
  				sb.sem_num = 0;
  				sb.sem_flg = 0;
-				//semop(semid, &sb, 1);
+				semop(semid, &sb, 1);
 				//printf("USER: CLAIM %d:%d\n", index, resource);
 				shmMsg[0] = index;
 				shmMsg[1] = 1; //claim
@@ -79,12 +79,11 @@ int main(int argc, char* argv[]){
 					sb.sem_op = -1;
  					sb.sem_num = 0;
  					sb.sem_flg = 0;
-					//semop(semid, &sb, 1);
+					semop(semid, &sb, 1);
 					//printf("USER: RELEASE %d:%d\n", index, resource);
 					shmMsg[0] = index;
 					shmMsg[1] = 0; //release
 					shmMsg[2] = resource; //resource to release
-					semop(semid, &sb, 1);
 				}
 			}
 	//		break;
