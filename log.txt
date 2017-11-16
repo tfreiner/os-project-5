@@ -1,307 +1,379 @@
-Master has detected P1 requesting R3 at time 10:5720
-Master granting P1 requesting R3 at time 10:5720
-Master running deadlock detection at time 10:5720
+Master has detected P1 requesting R7 at time 12:6120
+Master granting P1 requesting R7 at time 12:6120
+Master running deadlock detection at time 12:6120
 Master did not detect a deadlock
-Master has detected P1 requesting R1 at time 16:9948
-Master granting P1 requesting R1 at time 16:9948
-Master running deadlock detection at time 16:9948
+Master has detected P1 requesting R1 at time 216:108695
+Master granting P1 requesting R1 at time 216:108695
+Master running deadlock detection at time 216:108695
 Master did not detect a deadlock
-Master has detected P5 requesting R14 at time 979:489258
-Master granting P5 requesting R14 at time 979:489258
-Master running deadlock detection at time 979:489258
+Master has detected P5 requesting R3 at time 2057:1007391
+Master granting P5 requesting R3 at time 2057:1007391
+Master running deadlock detection at time 2057:1007391
 Master did not detect a deadlock
-Master has detected P1 requesting R5 at time 1141:572886
-Master granting P1 requesting R5 at time 1141:572886
-Master running deadlock detection at time 1141:572886
+Master has acknowledged P1 is terminating at time 3993:1970169
+Master running deadlock detection at time 3993:1970169
 Master did not detect a deadlock
-Master has detected P0 requesting R19 at time 6037:3007440
-Master granting P0 requesting R19 at time 6037:3007440
-Master running deadlock detection at time 6037:3007440
+Master has detected P9 requesting R11 at time 7304:3661028
+Master granting P9 requesting R11 at time 7304:3661028
+Master running deadlock detection at time 7304:3661028
 Master did not detect a deadlock
-Master has detected P9 requesting R13 at time 6673:3308902
-Master granting P9 requesting R13 at time 6673:3308902
-Master running deadlock detection at time 6673:3308902
+Master has detected P5 requesting R8 at time 7531:3777278
+Master granting P5 requesting R8 at time 7531:3777278
+Master running deadlock detection at time 7531:3777278
 Master did not detect a deadlock
-Master has detected P5 requesting R8 at time 8256:4086081
-Master granting P5 requesting R8 at time 8256:4086081
-Master running deadlock detection at time 8256:4086081
+Master has detected P0 requesting R19 at time 7689:3858268
+Master granting P0 requesting R19 at time 7689:3858268
+Master running deadlock detection at time 7689:3858268
 Master did not detect a deadlock
-Master has detected P2 requesting R1 at time 8395:4161612
-Master granting P2 requesting R1 at time 8395:4161612
-Master running deadlock detection at time 8395:4161612
+Master has detected P8 requesting R8 at time 7920:3975727
+Master granting P8 requesting R8 at time 7920:3975727
+Master running deadlock detection at time 7920:3975727
 Master did not detect a deadlock
-Master has acknowledged P1 releasing R1 at time 8502:4214953
-Master running deadlock detection at time 8502:4214953
+Master has detected P2 requesting R4 at time 7921:3976110
+Master granting P2 requesting R4 at time 7921:3976110
+Master running deadlock detection at time 7921:3976110
 Master did not detect a deadlock
-Master has detected P15 requesting R10 at time 10180:5046544
-Master granting P15 requesting R10 at time 10180:5046544
-Master running deadlock detection at time 10180:5046544
+Master has detected P6 requesting R13 at time 8831:4418931
+Master granting P6 requesting R13 at time 8831:4418931
+Master running deadlock detection at time 8831:4418931
 Master did not detect a deadlock
-Master has detected P6 requesting R0 at time 11052:5490746
-Master granting P6 requesting R0 at time 11052:5490746
-Master running deadlock detection at time 11052:5490746
+Master has detected P13 requesting R14 at time 8863:4432599
+Master granting P13 requesting R14 at time 8863:4432599
+Master running deadlock detection at time 8863:4432599
 Master did not detect a deadlock
-Master has detected P11 requesting R1 at time 11069:5498010
-Master granting P11 requesting R1 at time 11069:5498010
-Master running deadlock detection at time 11069:5498010
+Master has detected P11 requesting R19 at time 8864:4433371
+Master granting P11 requesting R19 at time 8864:4433371
+Master running deadlock detection at time 8864:4433371
 Master did not detect a deadlock
-Master has detected P8 requesting R1 at time 11992:5955157
-Master granting P8 requesting R1 at time 11992:5955157
-Master running deadlock detection at time 11992:5955157
+Master has detected P7 requesting R6 at time 9775:4889639
+Master granting P7 requesting R6 at time 9775:4889639
+Master running deadlock detection at time 9775:4889639
 Master did not detect a deadlock
-Master has detected P12 requesting R11 at time 12015:5967206
-Master granting P12 requesting R11 at time 12015:5967206
-Master running deadlock detection at time 12015:5967206
+Master has detected P10 requesting R3 at time 10378:5196959
+Master granting P10 requesting R3 at time 10378:5196959
+Master running deadlock detection at time 10378:5196959
 Master did not detect a deadlock
-Master has detected P0 requesting R6 at time 12016:5967534
-Master granting P0 requesting R6 at time 12016:5967534
-Master running deadlock detection at time 12016:5967534
+Master has detected P3 requesting R0 at time 10538:5275204
+Master granting P3 requesting R0 at time 10538:5275204
+Master running deadlock detection at time 10538:5275204
 Master did not detect a deadlock
-Master has detected P16 requesting R1 at time 12054:5988907
-Master granting P16 requesting R1 at time 12054:5988907
-Master running deadlock detection at time 12054:5988907
+Master has detected P15 requesting R8 at time 10579:5295804
+Master granting P15 requesting R8 at time 10579:5295804
+Master running deadlock detection at time 10579:5295804
 Master did not detect a deadlock
-Master has detected P9 requesting R19 at time 12055:5989308
-Master granting P9 requesting R19 at time 12055:5989308
-Master running deadlock detection at time 12055:5989308
+Master has detected P16 requesting R8 at time 10615:5315260
+Master denying P16 requesting R8 at time 10615:5315260
+Master running deadlock detection at time 10615:5315260
 Master did not detect a deadlock
-Master has detected P17 requesting R10 at time 12089:6003348
-Master granting P17 requesting R10 at time 12089:6003348
-Master running deadlock detection at time 12089:6003348
+Master has detected P12 requesting R1 at time 10659:5335138
+Master granting P12 requesting R1 at time 10659:5335138
+Master running deadlock detection at time 10659:5335138
 Master did not detect a deadlock
-Master has detected P4 requesting R3 at time 12113:6017188
-Master granting P4 requesting R3 at time 12113:6017188
-Master running deadlock detection at time 12113:6017188
+Master has detected P9 requesting R10 at time 10670:5340642
+Master granting P9 requesting R10 at time 10670:5340642
+Master running deadlock detection at time 10670:5340642
 Master did not detect a deadlock
-Master has acknowledged P5 releasing R14 at time 12114:6018101
-Master running deadlock detection at time 12114:6018101
+Master has detected P5 requesting R6 at time 10686:5350146
+Master granting P5 requesting R6 at time 10686:5350146
+Master running deadlock detection at time 10686:5350146
 Master did not detect a deadlock
-Master has detected P2 requesting R2 at time 12130:6028348
-Master granting P2 requesting R2 at time 12130:6028348
-Master running deadlock detection at time 12130:6028348
+Master has detected P0 requesting R17 at time 10695:5354542
+Master granting P0 requesting R17 at time 10695:5354542
+Master running deadlock detection at time 10695:5354542
 Master did not detect a deadlock
-Master has acknowledged P1 releasing R1 at time 12131:6028562
-Master running deadlock detection at time 12131:6028562
-Master did not detect a deadlock
-Master has detected P13 requesting R15 at time 12144:6035122
-Master granting P13 requesting R15 at time 12144:6035122
+Master has detected P8 requesting R15 at time 10696:5355361
+Master granting P8 requesting R15 at time 10696:5355361
 Current system resources:
 	R0 (s)	R1 (s)	R2 (s)	R3 (s)	R4 (s)	R5 	R6 	R7 	R8 	R9 	R10 	R11 	R12 	R13 	R14 	R15 	R16 	R17 	R18 	R19 
-P0 	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	1
-P1 	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P2 	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P3 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P4 	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P5 	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0
-P6 	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P7 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P8 	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P9 	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	1
-P10 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P11 	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P12 	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
-P13 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+P0 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1
+P1 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P2 	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P3 	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P4 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P5 	0	0	0	1	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0
+P6 	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+P7 	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
+P8 	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	1	0	0	0	0
+P9 	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0
+P10 	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P11 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1
+P12 	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P13 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0
 P14 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P15 	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0
-P16 	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P17 	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0
-Master running deadlock detection at time 12144:6035122
+P15 	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0
+P16 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P17 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Master running deadlock detection at time 10696:5355361
 Master did not detect a deadlock
-Master has detected P14 requesting R9 at time 12145:6035927
-Master granting P14 requesting R9 at time 12145:6035927
-Master running deadlock detection at time 12145:6035927
+Master has detected P2 requesting R17 at time 10708:5359328
+Master granting P2 requesting R17 at time 10708:5359328
+Master running deadlock detection at time 10708:5359328
 Master did not detect a deadlock
-Master has detected P15 requesting R16 at time 12146:6036571
-Master granting P15 requesting R16 at time 12146:6036571
-Master running deadlock detection at time 12146:6036571
+Master has detected P1 requesting R10 at time 10732:5372453
+Master granting P1 requesting R10 at time 10732:5372453
+Master running deadlock detection at time 10732:5372453
 Master did not detect a deadlock
-Master has detected P10 requesting R11 at time 12162:6044264
-Master granting P10 requesting R11 at time 12162:6044264
-Master running deadlock detection at time 12162:6044264
+Master has detected P6 requesting R19 at time 10741:5376198
+Master granting P6 requesting R19 at time 10741:5376198
+Master running deadlock detection at time 10741:5376198
 Master did not detect a deadlock
-Master has detected P6 requesting R9 at time 12163:6045167
-Master denying P6 requesting R9 at time 12163:6045167
-Master running deadlock detection at time 12163:6045167
+Master has detected P13 requesting R13 at time 10742:5377114
+Master granting P13 requesting R13 at time 10742:5377114
+Master running deadlock detection at time 10742:5377114
 Master did not detect a deadlock
-Master has detected P7 requesting R7 at time 12173:6049630
-Master granting P7 requesting R7 at time 12173:6049630
-Master running deadlock detection at time 12173:6049630
+Master has detected P11 requesting R3 at time 10747:5379495
+Master granting P11 requesting R3 at time 10747:5379495
+Master running deadlock detection at time 10747:5379495
 Master did not detect a deadlock
-Master has detected P11 requesting R3 at time 12174:6050611
-Master granting P11 requesting R3 at time 12174:6050611
-Master running deadlock detection at time 12174:6050611
+Master has detected P4 requesting R5 at time 10766:5389638
+Master granting P4 requesting R5 at time 10766:5389638
+Master running deadlock detection at time 10766:5389638
 Master did not detect a deadlock
-Master has detected P3 requesting R0 at time 12181:6053897
-Master granting P3 requesting R0 at time 12181:6053897
-Master running deadlock detection at time 12181:6053897
+Master has detected P14 requesting R0 at time 10784:5399745
+Master granting P14 requesting R0 at time 10784:5399745
+Master running deadlock detection at time 10784:5399745
 Master did not detect a deadlock
-Master has detected P8 requesting R1 at time 12182:6053940
-Master granting P8 requesting R1 at time 12182:6053940
-Master running deadlock detection at time 12182:6053940
+Master has detected P7 requesting R15 at time 10785:5399795
+Master granting P7 requesting R15 at time 10785:5399795
+Master running deadlock detection at time 10785:5399795
 Master did not detect a deadlock
-Master has detected P12 requesting R12 at time 12197:6060164
-Master granting P12 requesting R12 at time 12197:6060164
-Master running deadlock detection at time 12197:6060164
+Master has detected P10 requesting R2 at time 10794:5405217
+Master granting P10 requesting R2 at time 10794:5405217
+Master running deadlock detection at time 10794:5405217
 Master did not detect a deadlock
-Master has acknowledged P0 releasing R19 at time 12198:6060661
-Master running deadlock detection at time 12198:6060661
+Master has detected P3 requesting R6 at time 10815:5414192
+Master granting P3 requesting R6 at time 10815:5414192
+Master running deadlock detection at time 10815:5414192
 Master did not detect a deadlock
-Master has detected P16 requesting R5 at time 12199:6060913
-Master granting P16 requesting R5 at time 12199:6060913
-Master running deadlock detection at time 12199:6060913
+Master has detected P15 requesting R6 at time 10825:5418034
+Master denying P15 requesting R6 at time 10825:5418034
+Master running deadlock detection at time 10825:5418034
 Master did not detect a deadlock
-Master has detected P9 requesting R13 at time 12200:6061138
-Master granting P9 requesting R13 at time 12200:6061138
-Master running deadlock detection at time 12200:6061138
+Master has acknowledged P16 is terminating at time 10832:5421912
+Master running deadlock detection at time 10832:5421912
 Master did not detect a deadlock
-Master has detected P17 requesting R8 at time 12212:6066601
-Master granting P17 requesting R8 at time 12212:6066601
-Master running deadlock detection at time 12212:6066601
+Master has acknowledged P12 is terminating at time 10833:5422796
+Master running deadlock detection at time 10833:5422796
 Master did not detect a deadlock
-Master has detected P4 requesting R11 at time 12216:6068005
-Master denying P4 requesting R11 at time 12216:6068005
-Master running deadlock detection at time 12216:6068005
+Master has acknowledged P9 releasing R11 at time 11206:5617347
+Master running deadlock detection at time 11206:5617347
 Master did not detect a deadlock
-Master has acknowledged P5 releasing R8 at time 12217:6068755
-Master running deadlock detection at time 12217:6068755
+Master has acknowledged P5 releasing R3 at time 12751:6372130
+Master running deadlock detection at time 12751:6372130
 Master did not detect a deadlock
-Master has detected P2 requesting R15 at time 12218:6069725
-Master granting P2 requesting R15 at time 12218:6069725
-Master running deadlock detection at time 12218:6069725
+Master has detected P0 requesting R19 at time 12767:6378953
+Master denying P0 requesting R19 at time 12767:6378953
+Master running deadlock detection at time 12767:6378953
 Master did not detect a deadlock
-Master has detected P1 requesting R10 at time 12219:6070352
-Master granting P1 requesting R10 at time 12219:6070352
-Master running deadlock detection at time 12219:6070352
+Master has detected P8 requesting R15 at time 13934:6981057
+Master denying P8 requesting R15 at time 13934:6981057
+Master running deadlock detection at time 13934:6981057
 Master did not detect a deadlock
-Master has detected P13 requesting R19 at time 12231:6076764
-Master granting P13 requesting R19 at time 12231:6076764
-Master running deadlock detection at time 12231:6076764
+Master has acknowledged P2 releasing R4 at time 13935:6982038
+Master running deadlock detection at time 13935:6982038
 Master did not detect a deadlock
-Master has detected P14 requesting R2 at time 12232:6077236
-Master granting P14 requesting R2 at time 12232:6077236
-Master running deadlock detection at time 12232:6077236
+Master has detected P1 requesting R13 at time 13944:6985701
+Master granting P1 requesting R13 at time 13944:6985701
+Master running deadlock detection at time 13944:6985701
 Master did not detect a deadlock
-Master has detected P15 requesting R8 at time 12233:6077400
-Master granting P15 requesting R8 at time 12233:6077400
-Master running deadlock detection at time 12233:6077400
+Master has acknowledged P6 releasing R13 at time 22773:11372125
+Master running deadlock detection at time 22773:11372125
 Master did not detect a deadlock
-Master has detected P10 requesting R0 at time 12248:6084758
-Master granting P10 requesting R0 at time 12248:6084758
-Master running deadlock detection at time 12248:6084758
+Master has detected P13 requesting R9 at time 22774:11372714
+Master granting P13 requesting R9 at time 22774:11372714
+Master running deadlock detection at time 22774:11372714
 Master did not detect a deadlock
-Master has detected P6 requesting R17 at time 12249:6085575
-Master granting P6 requesting R17 at time 12249:6085575
-Master running deadlock detection at time 12249:6085575
+Master has acknowledged P11 is terminating at time 27052:13509613
+Master running deadlock detection at time 27052:13509613
 Master did not detect a deadlock
-Master has detected P7 requesting R6 at time 12442:6181545
-Master granting P7 requesting R6 at time 12442:6181545
-Master running deadlock detection at time 12442:6181545
+Master has detected P4 requesting R4 at time 27053:13510333
+Master granting P4 requesting R4 at time 27053:13510333
+Master running deadlock detection at time 27053:13510333
 Master did not detect a deadlock
-Master has acknowledged P11 releasing R1 at time 12443:6182210
-Master running deadlock detection at time 12443:6182210
+Master has detected P14 requesting R10 at time 29139:14538329
+Master granting P14 requesting R10 at time 29139:14538329
+Master running deadlock detection at time 29139:14538329
 Master did not detect a deadlock
-Master has detected P3 requesting R16 at time 12444:6183114
-Master granting P3 requesting R16 at time 12444:6183114
+Master has acknowledged P7 releasing R6 at time 30477:15208919
+Master running deadlock detection at time 30477:15208919
+Master did not detect a deadlock
+Master has acknowledged P10 releasing R3 at time 30478:15209085
+Master running deadlock detection at time 30478:15209085
+Master did not detect a deadlock
+Master has acknowledged P3 releasing R0 at time 30492:15216366
+Master running deadlock detection at time 30492:15216366
+Master did not detect a deadlock
+Master has detected P15 requesting R2 at time 34773:17331439
+Master granting P15 requesting R2 at time 34773:17331439
+Master running deadlock detection at time 34773:17331439
+Master did not detect a deadlock
+Master has detected P17 requesting R16 at time 34785:17338628
+Master granting P17 requesting R16 at time 34785:17338628
+Master running deadlock detection at time 34785:17338628
+Master did not detect a deadlock
+Master has acknowledged P9 is terminating at time 34797:17344323
+Master running deadlock detection at time 34797:17344323
+Master did not detect a deadlock
+Master has detected P16 requesting R0 at time 34798:17344623
+Master granting P16 requesting R0 at time 34798:17344623
+Master running deadlock detection at time 34798:17344623
+Master did not detect a deadlock
+Master has detected P12 requesting R12 at time 34910:17396350
+Master granting P12 requesting R12 at time 34910:17396350
+Master running deadlock detection at time 34910:17396350
+Master did not detect a deadlock
+Master has detected P5 requesting R0 at time 35025:17449266
+Master granting P5 requesting R0 at time 35025:17449266
+Master running deadlock detection at time 35025:17449266
+Master did not detect a deadlock
+Master has acknowledged P0 releasing R17 at time 35041:17456895
+Master running deadlock detection at time 35041:17456895
+Master did not detect a deadlock
+Master has acknowledged P8 releasing R8 at time 42273:21031067
+Master running deadlock detection at time 42273:21031067
+Master did not detect a deadlock
+Master has detected P2 requesting R19 at time 46530:23152558
+Master granting P2 requesting R19 at time 46530:23152558
 Current system resources:
 	R0 (s)	R1 (s)	R2 (s)	R3 (s)	R4 (s)	R5 	R6 	R7 	R8 	R9 	R10 	R11 	R12 	R13 	R14 	R15 	R16 	R17 	R18 	R19 
-P0 	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
-P1 	0	0	0	1	0	1	0	0	0	0	1	0	0	0	0	0	0	0	0	0
-P2 	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
-P3 	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0
-P4 	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P5 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P6 	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0
-P7 	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0
-P8 	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P9 	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	1
-P10 	1	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
-P11 	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P12 	0	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	0	0	0	0
-P13 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	1
-P14 	0	0	1	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0
-P15 	0	0	0	0	0	0	0	0	1	0	1	0	0	0	0	0	1	0	0	0
-P16 	0	1	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-P17 	0	0	0	0	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0
-Master running deadlock detection at time 12444:6183114
+P0 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1
+P1 	0	0	0	0	0	0	0	0	0	0	1	0	0	1	0	0	0	0	0	0
+P2 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	1
+P3 	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
+P4 	0	0	0	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P5 	1	0	0	0	0	0	1	0	1	0	0	0	0	0	0	0	0	0	0	0
+P6 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1
+P7 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+P8 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0
+P9 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P10 	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P11 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P12 	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0
+P13 	0	0	0	0	0	0	0	0	0	1	0	0	0	1	1	0	0	0	0	0
+P14 	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0
+P15 	0	0	1	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0
+P16 	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+P17 	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0
+Master running deadlock detection at time 46530:23152558
 Master did not detect a deadlock
-Master has acknowledged P8 releasing R1 at time 12445:6183637
-Master running deadlock detection at time 12445:6183637
+Master has acknowledged P1 releasing R10 at time 46531:23153363
+Master running deadlock detection at time 46531:23153363
 Master did not detect a deadlock
-Master has acknowledged P12 releasing R11 at time 12465:6194814
-Master running deadlock detection at time 12465:6194814
+Master has acknowledged P6 releasing R13 at time 50509:25139195
+Master running deadlock detection at time 50509:25139195
 Master did not detect a deadlock
-Master has acknowledged P0 releasing R6 at time 12466:6195493
-Master running deadlock detection at time 12466:6195493
+Master has acknowledged P13 is terminating at time 51705:25738488
+Master running deadlock detection at time 51705:25738488
 Master did not detect a deadlock
-Master has acknowledged P16 releasing R1 at time 12467:6195768
-Master running deadlock detection at time 12467:6195768
+Master has acknowledged P4 releasing R5 at time 52081:25923096
+Master running deadlock detection at time 52081:25923096
 Master did not detect a deadlock
-Master has detected P9 requesting R5 at time 12468:6196492
-Master granting P9 requesting R5 at time 12468:6196492
-Master running deadlock detection at time 12468:6196492
+Master has detected P11 requesting R16 at time 52104:25933532
+Master granting P11 requesting R16 at time 52104:25933532
+Master running deadlock detection at time 52104:25933532
 Master did not detect a deadlock
-Master has detected P17 requesting R14 at time 12479:6201743
-Master granting P17 requesting R14 at time 12479:6201743
-Master running deadlock detection at time 12479:6201743
+Master has acknowledged P14 releasing R0 at time 52112:25938347
+Master running deadlock detection at time 52112:25938347
 Master did not detect a deadlock
-Master has detected P4 requesting R0 at time 12480:6202399
-Master granting P4 requesting R0 at time 12480:6202399
-Master running deadlock detection at time 12480:6202399
+Master has acknowledged P7 releasing R6 at time 52113:25938498
+Master running deadlock detection at time 52113:25938498
 Master did not detect a deadlock
-Master has acknowledged P5 releasing R8 at time 12481:6202723
-Master running deadlock detection at time 12481:6202723
+Master has acknowledged P10 is terminating at time 53718:26726908
+Master running deadlock detection at time 53718:26726908
 Master did not detect a deadlock
-Master has acknowledged P2 releasing R1 at time 12482:6203302
-Master running deadlock detection at time 12482:6203302
+Master has acknowledged P3 releasing R0 at time 53719:26727397
+Master running deadlock detection at time 53719:26727397
 Master did not detect a deadlock
-Master has detected P1 requesting R15 at time 12483:6203399
-Master granting P1 requesting R15 at time 12483:6203399
-Master running deadlock detection at time 12483:6203399
+Master has acknowledged P15 releasing R8 at time 54374:27061817
+Master running deadlock detection at time 54374:27061817
 Master did not detect a deadlock
-Master has acknowledged P13 releasing R15 at time 12498:6211234
-Master running deadlock detection at time 12498:6211234
+Master has acknowledged P17 is terminating at time 55119:27439706
+Master running deadlock detection at time 55119:27439706
 Master did not detect a deadlock
-Master has acknowledged P14 releasing R9 at time 12499:6211833
-Master running deadlock detection at time 12499:6211833
-	Process P5 deadlocked
+Master has detected P16 requesting R13 at time 55157:27458947
+Master granting P16 requesting R13 at time 55157:27458947
+Master running deadlock detection at time 55157:27458947
+Master did not detect a deadlock
+Master has acknowledged P12 is terminating at time 55178:27467822
+Master running deadlock detection at time 55178:27467822
+Master did not detect a deadlock
+Master has acknowledged P5 releasing R6 at time 55179:27468364
+Master running deadlock detection at time 55179:27468364
+Master did not detect a deadlock
+Master has acknowledged P0 releasing R17 at time 55185:27471123
+Master running deadlock detection at time 55185:27471123
+Master did not detect a deadlock
+Master has detected P9 requesting R0 at time 59967:29873092
+Master granting P9 requesting R0 at time 59967:29873092
+Master running deadlock detection at time 59967:29873092
+Master did not detect a deadlock
+Master has detected P8 requesting R0 at time 64448:32111424
+Master granting P8 requesting R0 at time 64448:32111424
+Master running deadlock detection at time 64448:32111424
+Master did not detect a deadlock
+Master has acknowledged P2 releasing R17 at time 64450:32112181
+Master running deadlock detection at time 64450:32112181
+Master did not detect a deadlock
+Master has detected P1 requesting R4 at time 72992:36328121
+Master granting P1 requesting R4 at time 72992:36328121
+Master running deadlock detection at time 72992:36328121
+Master did not detect a deadlock
+Master has acknowledged P6 is terminating at time 73423:36542143
+Master running deadlock detection at time 73423:36542143
+Master did not detect a deadlock
+Master has detected P4 requesting R16 at time 73424:36542629
+Master granting P4 requesting R16 at time 73424:36542629
+Master running deadlock detection at time 73424:36542629
+Master did not detect a deadlock
+Master has acknowledged P11 is terminating at time 73476:36572517
+Master running deadlock detection at time 73476:36572517
+Master did not detect a deadlock
+Master has detected P14 requesting R16 at time 73859:36761087
+Master granting P14 requesting R16 at time 73859:36761087
+Master running deadlock detection at time 73859:36761087
+Master did not detect a deadlock
+Master has detected P7 requesting R13 at time 75406:37543459
+Master granting P7 requesting R13 at time 75406:37543459
+Master running deadlock detection at time 75406:37543459
+Master did not detect a deadlock
+Master has detected P13 requesting R13 at time 75431:37558335
+Master granting P13 requesting R13 at time 75431:37558335
+Master running deadlock detection at time 75431:37558335
+Master did not detect a deadlock
+Master has acknowledged P3 releasing R6 at time 75459:37574320
+Master running deadlock detection at time 75459:37574320
+	Process P14 deadlocked
 	Attempting to resolve deadlock...
-	Killing process P5
-		Resources released are as follows: this process did not have any resources allocated to it
-killProcess: 5
+	Killing process P14
+		Resources released are as follows: R10:1 R16:1 
 System is no longer in deadlock
-Master has detected P15 requesting R11 at time 12500:6212004
-Master granting P15 requesting R11 at time 12500:6212004
-Master running deadlock detection at time 12500:6212004
-	Process P5 deadlocked
+Master has detected P15 requesting R5 at time 75460:37574744
+Master granting P15 requesting R5 at time 75460:37574744
+Master running deadlock detection at time 75460:37574744
+	Process P14 deadlocked
 	Attempting to resolve deadlock...
-	Killing process P5
+	Killing process P14
 		Resources released are as follows: this process did not have any resources allocated to it
-killProcess: 5
 System is no longer in deadlock
-Master has detected P10 requesting R14 at time 12501:6212357
-Master granting P10 requesting R14 at time 12501:6212357
-Master running deadlock detection at time 12501:6212357
-	Process P5 deadlocked
+Master has detected P10 requesting R10 at time 75461:37575593
+Master granting P10 requesting R10 at time 75461:37575593
+Master running deadlock detection at time 75461:37575593
+	Process P14 deadlocked
 	Attempting to resolve deadlock...
-	Killing process P5
+	Killing process P14
 		Resources released are as follows: this process did not have any resources allocated to it
-killProcess: 5
 System is no longer in deadlock
-Master has detected P6 requesting R10 at time 12502:6213133
-Master granting P6 requesting R10 at time 12502:6213133
-Master running deadlock detection at time 12502:6213133
-	Process P5 deadlocked
+Master has acknowledged P16 releasing R0 at time 75462:37576055
+Master running deadlock detection at time 75462:37576055
+	Process P14 deadlocked
 	Attempting to resolve deadlock...
-	Killing process P5
+	Killing process P14
 		Resources released are as follows: this process did not have any resources allocated to it
-killProcess: 5
 System is no longer in deadlock
-Master has detected P7 requesting R15 at time 12503:6213952
-Master granting P7 requesting R15 at time 12503:6213952
-Master running deadlock detection at time 12503:6213952
-	Process P5 deadlocked
+Master has acknowledged P5 is terminating at time 75463:37576802
+Master running deadlock detection at time 75463:37576802
+	Process P14 deadlocked
 	Attempting to resolve deadlock...
-	Killing process P5
+	Killing process P14
 		Resources released are as follows: this process did not have any resources allocated to it
-killProcess: 5
 System is no longer in deadlock
