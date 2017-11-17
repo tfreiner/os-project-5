@@ -1,0 +1,9 @@
+Taylor Freiner
+OS PROJECT 5
+
+This program uses an optional -v option for verbose logging, so to run this program, type 'make' to create the executables, and then type oss (or oss -v) to begin execution.
+
+This program runs for 2 seconds real time or until 5 deadlocks are detected.
+
+I ran into a rare issue (seems to be every 15 or so runs) where the program will just quit with a 'Killed' error message.
+Still looking into this issue but a simple re-run will take care of it.

@@ -1,7 +1,7 @@
 /**
  * Author: Taylor Freiner
  * Date: November 16th, 2017
- * Log: Cleaning up code
+ * Log: Finished 
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +25,7 @@
 #define BIT_COUNT 32
 
 struct sembuf sb;
-int sharedmem[6];
+int sharedmem[5];
 int processIds[1000];
 int globalProcessCount = 0;
 bool verbose = 0;
@@ -44,18 +44,22 @@ int deadlockFixed = 0;
 int availableVector[20];
 int requestMatrix[18][20];
 int allocatedMatrix[18][20];
+int averageKilled[10];
+int avKilledIndex = 0;
 
-void checkRequests(int*, int*, pStruct*, rStruct*, int*, FILE*);
+void checkRequests(int*, pStruct*, rStruct*, int*, FILE*);
 
 bool deadlock(const int*, const int m, const int n, int[18][20], int[18][20], FILE*, int);
 
-bool req_lt_avail(int[18][20], const int*, const int, const int);
+bool req_lt_avail(int[20], const int*, const int);
 
 union semun{
 	int val;
 };
 
 void clean(int sig){
+	int avKilledCount = 0;
+	int numAvKilled = 0;
 
 	if(sig == 2)
 		fprintf(stderr, "Interrupt signaled. Removing shared memory and killing processes.\n");
@@ -70,16 +74,26 @@ void clean(int sig){
 	semctl(sharedmem[2], 0, IPC_RMID);
 	shmctl(sharedmem[3], IPC_RMID, NULL);
 	shmctl(sharedmem[4], IPC_RMID, NULL);
-	shmctl(sharedmem[5], IPC_RMID, NULL);
 
 	for(i = 0; i < globalProcessCount; i++){
 		kill(processIds[i], SIGKILL);
 	}
 
+	for(i = 0; i < 10; i++){
+		if(averageKilled[i] != -1){
+			avKilledCount += averageKilled[i];
+			numAvKilled++;
+		}
+	}
+	
+	if(avKilledCount > 0 && numAvKilled > 0)
+		avKilledCount = avKilledCount / numAvKilled;
+
 	printf("Number of granted requests: %d\n", grantedRequestsGlobal);
 	printf("Number of processes killed by the deadlock detection algorithm: %d\n", killedProcesses);
 	printf("Number of processes that terminated successfully: %d\n", terminatedProcesses);
 	printf("Number of times the deadlock detection algorithm ran: %d\n", deadAlgRun);
+	printf("Average number of processes the deadlock algorithm killed: %d\n", avKilledCount);
 	exit(1);
 }
 
@@ -148,12 +162,10 @@ int main(int argc, char* argv[]){
 	key_t key3 = ftok("keygen3", 1);
 	key_t key4 = ftok("keygen4", 1);
 	key_t key5 = ftok("keygen5", 1);
-	key_t key6 = ftok("keygen6", 1);
 	int memid = shmget(key, sizeof(int*)*2, IPC_CREAT | 0644);
 	int memid2 = shmget(key2, sizeof(struct rStruct) * 20, IPC_CREAT | 0644);
 	int memid3 = shmget(key4, sizeof(int*)*3, IPC_CREAT | 0644);
 	int memid4 = shmget(key5, sizeof(struct pStruct) * 18, IPC_CREAT | 0644);
-	int memid5 = shmget(key6, sizeof(int*)*2, IPC_CREAT | 0644);
 	int semid = semget(key3, 1, IPC_CREAT | 0644);
 	if(memid == -1 || memid2 == -1){
 		fprintf(stderr, "%s: ", argv[0]);
@@ -164,13 +176,11 @@ int main(int argc, char* argv[]){
 	sharedmem[2] = semid;
 	sharedmem[3] = memid3;
 	sharedmem[4] = memid4;
-	sharedmem[5] = memid5;
 	int *clock = (int *)shmat(memid, NULL, 0);
 	int *shmMsg = (int *)shmat(memid3, NULL, 0);
-	int *termMsg = (int *)shmat(memid5, NULL, 0);
 	rBlock = (struct rStruct *)shmat(memid2, NULL, 0);
 	pBlock = (struct pStruct *)shmat(memid4, NULL, 0);
-	if(*clock == -1 || *termMsg == -1 || (int*)rBlock == (int*)-1 || (int*)pBlock == (int*)-1){
+	if(*clock == -1 || (int*)rBlock == (int*)-1 || (int*)pBlock == (int*)-1){
 		fprintf(stderr, "%s: ", argv[0]);
 		perror("Error: \n");
 		clean(1);
@@ -180,7 +190,6 @@ int main(int argc, char* argv[]){
 	for(i = 0; i < 3; i++){
 		if(i != 2){
 			memcpy(&clock[i], &clockVal, 4);
-			memcpy(&termMsg[i], &clockVal, 4);
 		}
 		memcpy(&shmMsg[i], &messageVal, 4);
 	}
@@ -213,6 +222,10 @@ int main(int argc, char* argv[]){
 			requestMatrix[i][j] = 0;
 			allocatedMatrix[i][j] = 0;
 		}
+	}
+
+	for(i = 0; i < 10; i++){
+		averageKilled[i] = -1;
 	}
 
 	for(i = 0; i < 20; i++){
@@ -295,7 +308,7 @@ int main(int argc, char* argv[]){
 				}
 			}
 		}
-		checkRequests(shmMsg, termMsg, pBlock, rBlock, clock, file);
+		checkRequests(shmMsg, pBlock, rBlock, clock, file);
 	}
 
 	sleep(5);
@@ -305,7 +318,7 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-void checkRequests(int *shmMsg, int *termMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FILE* file){
+void checkRequests(int *shmMsg, pStruct *pBlock, rStruct *rBlock, int *clock, FILE* file){
 	int pIndex = shmMsg[0];
 	int rIndex = shmMsg[2];
 	if(shmMsg[0] == -1 || shmMsg[2] == -1)
@@ -418,20 +431,6 @@ void checkRequests(int *shmMsg, int *termMsg, pStruct *pBlock, rStruct *rBlock, 
 		semop(sharedmem[2], &sb, 1);
 	}
 
-/*
-	for(i = 0; i < 20; i++)
-		availableVector[i] = rBlock[i].num - rBlock[i].numClaimed;
-		
-	printf("\tR0\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tR10\tR11\tR12\tR13\tR14\tR15\tR16\tR17\tR18\tR19\n");
-	for(i = 0; i < 18; i++){
-		printf("P%d\t", i);
-		for(j = 0; j < 20; j++){
-			printf("%d\t", pBlock[i].resourceNum[j]);
-		}
-		printf("\n");
-	}
-*/
-
 	if(lineCount < 100000){
 		fprintf(file, "Master running deadlock detection at time %d:%d\n", clock[0], clock[1]); //was causing seg fault
 		lineCount++;
@@ -439,41 +438,8 @@ void checkRequests(int *shmMsg, int *termMsg, pStruct *pBlock, rStruct *rBlock, 
 		
 	isDeadlock = true;
 
-/*
-	fprintf(file, "\nAVAILABLE VECTOR\n");
-	for(i = 0; i < 20; i++)
-		fprintf(file, "\tR%d ", i);
-	fprintf(file, "\n");
-	for(i = 0; i < 20; i++)
-		fprintf(file, "\t%d", availableVector[i]);
-	fprintf(file, "\nALLOCATED MATRIX\n");
-	for(i = 0; i < 20; i++){
-		fprintf(file, "\tR%d ", i);
-	}
-	fprintf(file, "\n");
-	for(i = 0; i < 18; i++){
-		fprintf(file, "P%d ", i);
-		for(j = 0; j < 20; j++){
-			fprintf(file, "\t%d", allocatedMatrix[i][j]);
-		}
-		fprintf(file, "\n");
-		lineCount++;
-	}
-	fprintf(file, "\nREQUEST MATRIX\n");
-	for(i = 0; i < 20; i++){
-		fprintf(file, "\tR%d ", i);
-	}
-	fprintf(file, "\n");
-	for(i = 0; i < 18; i++){
-		fprintf(file, "P%d ", i);
-		for(j = 0; j < 20; j++){
-			fprintf(file, "\t%d", requestMatrix[i][j]);
-		}
-		fprintf(file, "\n");
-		lineCount++;
-	}
-*/
-//	while(isDeadlock){
+	int numKilled = 0;
+	while(isDeadlock && killedProcesses < 6){
 		deadAlgRun++;
 		isDeadlock = deadlock(availableVector, 20, 18, requestMatrix, allocatedMatrix, file, killProcess);
 		killProcess = -1;
@@ -535,6 +501,7 @@ void checkRequests(int *shmMsg, int *termMsg, pStruct *pBlock, rStruct *rBlock, 
 			for(i = 0; i < 18; i++)	
 				deadlockedProcesses[i] = 0;
 			killedProcesses++;
+			numKilled++;
 			kill(pBlock[killProcess].pid, SIGKILL);
 			waitpid(pBlock[killProcess].pid, NULL, 0);
 			pBlock[killProcess].numClaimed = 0;
@@ -549,43 +516,12 @@ void checkRequests(int *shmMsg, int *termMsg, pStruct *pBlock, rStruct *rBlock, 
 				requestMatrix[killProcess][i] = 0;
 			}
 		}
-		killProcess = -1;
-//	}
+	}
+	if(wasDeadlock && avKilledIndex < 9){
+		averageKilled[avKilledIndex] = numKilled;
+		avKilledIndex++;
+	}
 
-/*
-	fprintf(file, "\n\n\n\n\nAVAILABLE VECTOR==========================================\n");
-	for(i = 0; i < 20; i++)
-		fprintf(file, "\tR%d ", i);
-	fprintf(file, "\n");
-	for(i = 0; i < 20; i++)
-		fprintf(file, "\t%d", availableVector[i]);
-	fprintf(file, "\nALLOCATED MATRIX\n");
-	for(i = 0; i < 20; i++){
-		fprintf(file, "\tR%d ", i);
-	}
-	fprintf(file, "\n");
-	for(i = 0; i < 18; i++){
-		fprintf(file, "P%d ", i);
-		for(j = 0; j < 20; j++){
-			fprintf(file, "\t%d", allocatedMatrix[i][j]);
-		}
-		fprintf(file, "\n");
-		lineCount++;
-	}
-	fprintf(file, "\nREQUEST MATRIX\n");
-	for(i = 0; i < 20; i++){
-		fprintf(file, "\tR%d ", i);
-	}
-	fprintf(file, "\n");
-	for(i = 0; i < 18; i++){
-		fprintf(file, "P%d ", i);
-		for(j = 0; j < 20; j++){
-			fprintf(file, "\t%d", requestMatrix[i][j]);
-		}
-		fprintf(file, "\n");
-		lineCount++;
-	}
-*/
 	if(wasDeadlock && lineCount < 100000){
 		fprintf(file, "System is no longer in deadlock\n");
 		lineCount++;
@@ -613,14 +549,15 @@ bool deadlock(const int *available, const int m, const int n, int request[18][20
 	}
 	for (i = 0; i < m; i++)
 		work[i] = available[i];
-	for (i = 0; i < n; finish[i++] = false);
+	for (i = 0; i < n; i++)
+		finish[i] = false;
 	for (p = 0; p < n; p++){
 		if (finish[p])
 			continue;
-		if (req_lt_avail(request, work, p, m)){
+		if (req_lt_avail(request[p], work, m)){
 			finish[p] = true;
 			for (i = 0; i < m; i++)
-				work[i] += allocated[p][m+i];
+				work[i] += allocated[p][i];
 			p = -1;
 		}
 	}
@@ -635,10 +572,10 @@ bool deadlock(const int *available, const int m, const int n, int request[18][20
 	return isDeadlocked; 
 }
 
-bool req_lt_avail(int req[18][20], const int *avail, const int pnum, const int num_res){
+bool req_lt_avail(int req[20], const int *avail, const int num_res){
 	int i;
 	for (i = 0; i < num_res; i++)
-		if (req[pnum][num_res+i] > avail[i])
-			break;
-	return (i == num_res);
+		if (req[i] > avail[i])
+			return false;
+	return true;
 }
