@@ -1,6 +1,6 @@
 Taylor Freiner
 OS PROJECT 5
-
+Repo. https://github.com/tfreiner/os-project-5
 This program uses an optional -v option for verbose logging, so to run this program, type 'make' to create the executables, and then type oss (or oss -v) to begin execution.
 
 This program runs for 2 seconds real time or until 5 deadlocks are detected.
