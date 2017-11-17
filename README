@@ -5,5 +5,9 @@ This program uses an optional -v option for verbose logging, so to run this prog
 
 This program runs for 2 seconds real time or until 5 deadlocks are detected.
 
-I ran into a rare issue (seems to be every 15 or so runs) where the program will just quit with a 'Killed' error message.
+To handle messages from oss and user, I am using a simple shared int array to notify oss of user's requests.
+The program checks for requests every iteration of the main loop, and the deadlocks are checked withing that function.
+If a deadlock is detected, that processes is terminated and master continues checking for deadlocks until there is no longer a deadlock.
+
+I ran into a rare issue (seems to be every 15 or so runs) where the program will run two oss processes concurrenlty.
 Still looking into this issue but a simple re-run will take care of it.

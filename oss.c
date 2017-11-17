@@ -26,7 +26,7 @@
 
 struct sembuf sb;
 int sharedmem[5];
-int processIds[1000];
+int processIds[10000];
 int globalProcessCount = 0;
 bool verbose = 0;
 int grantedRequests = 0;
@@ -67,7 +67,7 @@ void clean(int sig){
 		fprintf(stderr, "Program reached 2 seconds. Removing shared memory and killing processes.\n");	
 	else if(sig == 11)
 		fprintf(stderr, "Seg fault caught. Removing shared memory and killing processes. Please re-run program.\n");
-
+	
 	int i;
 	shmctl(sharedmem[0], IPC_RMID, NULL);
 	shmctl(sharedmem[1], IPC_RMID, NULL);
